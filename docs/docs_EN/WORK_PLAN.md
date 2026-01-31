@@ -57,7 +57,7 @@
 - [x] **HTML Template:** Professional layout including "Art. 293B" legal mentions.
 - [x] **Invoice Preview** Page: Read-only HTML view before PDF export.
 - [x] **PDF Engine:** Integration of DomPDF for document generation.
-- [ ] **Secure Export:** Protected routes for PDF downloads.
+- [x] **Secure Export:** Protected routes for PDF downloads.
 
 ### Phase 8: Dashboard Insights (Analytics)
 - [ ] **KPI Widgets:** Monthly/Yearly revenue tracking.

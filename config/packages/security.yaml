@@ -52,7 +52,10 @@ security:
 
         # Explicitly protect Client routes
         - { path: ^/client, roles: ROLE_USER }
-        
+
+        # Explicitly protect invoice routes pdf export
+        - { path: ^/invoice/\d+/export, roles: ROLE_USER }
+
         # Allow public access to login, registration, and logout routes
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }

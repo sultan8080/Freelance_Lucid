@@ -59,7 +59,7 @@
 - [x] **Template HTML :** Mise en page professionnelle incluant les mentions légales "Art. 293B".
 - [x] **Page d’Aperçu de Facture :** Vue HTML en lecture seule avant l’export PDF.
 - [x] **Moteur PDF :** Intégration de DomPDF pour la génération de documents.
-- [ ] **Export Sécurisé :** Routes protégées pour les téléchargements PDF. 
+- [x] **Export Sécurisé :** Routes protégées pour les téléchargements PDF. 
 
 ### Phase 8 : Insights & Statistiques (Analytics)
 - [ ] **Widgets KPI :** Suivi du chiffre d'affaires mensuel et annuel.

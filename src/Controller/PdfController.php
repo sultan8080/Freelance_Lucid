@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-
+#[IsGranted('ROLE_USER')]
 class PdfController extends AbstractController
 {
     #[Route('/invoice/{id}/export', name: 'app_invoice_export_pdf', methods: ['GET'])]
