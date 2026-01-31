@@ -36,9 +36,9 @@
 
 						{# 2. Amount #}
 						<th class="px-6 py-4 text-xs font-bold !hidden md:!table-cell !whitespace-nowrap uppercase tracking-wider text-slate-600 text-right">
-							Amount
+							Total
+							<span class="font-normal text-slate-400 lowercase">/ net</span>
 						</th>
-
 						{# 3. Actions #}
 						<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-600 text-right">
 							Actions
@@ -63,7 +63,8 @@
 											{% if invoice.invoiceNumber %}
 												{{ invoice.invoiceNumber }}
 											{% else %}
-												<span class="text-slate-600 font-medium">DRAFT - {{ invoice.id }}</span>
+												<span class="text-slate-600 font-medium">DRAFT -
+													{{ invoice.id }}</span>
 											{% endif %}
 										</span>
 									</div>
@@ -141,11 +142,32 @@
 							</td>
 
 							{# --- 2. Amount --- #}
-							<td class="px-6 py-4 text-right align-top pt-5 !hidden md:!table-cell !whitespace-nowrap">
+							<td
+								class="px-6 py-4 text-right align-top pt-5 !hidden md:!table-cell !whitespace-nowrap">
+
+								{# 1. Total (Gross) #}
 								<div class="font-bold text-slate-900 text-sm md:text-base">
 									{{ invoice.totalAmount|number_format(2, '.', ',') }}
 									<span class="text-xs font-normal text-slate-400 ml-0.5">{{ invoice.currency }}</span>
 								</div>
+
+								{# 2. Net (Smart Color) #}
+								{% if invoice.status == 'PAID' %}
+									{# If PAID: Show Green to indicate "Money in Pocket" #}
+									<div class="text-xs font-bold text-emerald-600 mt-1">
+										Net:
+										{{ invoice.netEstimate|number_format(2, '.', ',') }}
+										€
+									</div>
+								{% else %}
+									{# If UNPAID: Show Gray to indicate "Projected / Not yours yet" #}
+									<div class="text-xs font-medium text-slate-400 mt-1">
+										Net:
+										{{ invoice.netEstimate|number_format(2, '.', ',') }}
+										€
+									</div>
+								{% endif %}
+
 							</td>
 
 							{# --- 3. Actions --- #}

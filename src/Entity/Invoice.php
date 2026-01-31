@@ -455,4 +455,25 @@ class Invoice
 
         return $this;
     }
+
+    // Urssaf estimation helper
+    /**
+     * Calculates the estimated social charges based on Total HT.
+     * Formula: TotalHT * 21.2 / 100
+     */
+    private const URSSAF_PERCENTAGE = '21.2';
+
+    public function getUrssafEstimate(): string
+    {
+        // Calculate the multiplier: "21.2" / "100" = "0.2120"
+        $rate = bcdiv(self::URSSAF_PERCENTAGE, '100', 4);
+        return bcmul($this->totalHt, $rate, 2);
+    }
+
+    public function getNetEstimate(): string
+    {
+        $urssaf = $this->getUrssafEstimate();
+        // Total - Urssaf = Net
+        return bcsub($this->totalHt, $urssaf, 2);
+    }
 }
