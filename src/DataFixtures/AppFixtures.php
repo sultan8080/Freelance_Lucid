@@ -22,19 +22,16 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // 1. Initialize Faker with French Locale
         $faker = Factory::create('fr_FR');
 
+        // 1. Create Freelance Users
         for ($i = 1; $i <= 5; $i++) {
-
-            // 2. USER (Freelancer)
             $user = new User();
-            $user->setEmail("user$i@test.com"); 
+            $user->setEmail("user$i@test.com");
             $user->setFirstName($faker->firstName());
             $user->setLastName($faker->lastName());
             $user->setCompanyName($faker->company());
             
-            // Remove spaces for a valid-looking SIRET number string
             $siret = str_replace(' ', '', $faker->siret());
             $user->setSiretNumber($siret);
 
@@ -43,9 +40,8 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
 
-            for ($j = 1; $j <= 5; $j++) { 
-
-                // 3. CLIENT
+            // 2. Create Clients for each User
+            for ($j = 1; $j <= 5; $j++) {
                 $client = new Client();
                 $client->setFirstName($faker->firstName());
                 $client->setLastName($faker->lastName());
@@ -56,7 +52,7 @@ class AppFixtures extends Fixture
                 
                 $clientSiret = str_replace(' ', '', $faker->siret());
                 $client->setSiret($clientSiret);
-                $client->setVatNumber("FR" . substr($clientSiret, 0, 11)); // Fake VAT logic
+                $client->setVatNumber("FR" . substr($clientSiret, 0, 11));
                 
                 $client->setCity($faker->city());
                 $client->setPostCode(str_replace(' ', '', $faker->postcode()));
@@ -65,67 +61,57 @@ class AppFixtures extends Fixture
 
                 $manager->persist($client);
 
+                // 3. Create Invoices for each Client
                 for ($k = 1; $k <= rand(3, 8); $k++) {
-
-                    // 4. INVOICE
                     $invoice = new Invoice();
                     $invoice->setClient($client);
                     $invoice->setUser($user);
-                    $invoice->setProjectTitle($faker->sentence(3)); 
-                    
+                    $invoice->setProjectTitle($faker->sentence(3));
+                    $invoice->setCurrency('EUR'); // New attribute default
+
                     // Status Logic
                     $statuses = ['SENT', 'DRAFT', 'PAID'];
                     $status = $faker->randomElement($statuses);
-                    $invoice->setStatus($status);
-
-                    $now = new \DateTimeImmutable();
                     
-                    // Unique suffix for number
+                    // Generate a unique reference
                     $uniqueSuffix = str_pad((string)(($i * 1000) + ($j * 100) + $k), 4, '0', STR_PAD_LEFT);
+                    $now = new \DateTimeImmutable();
 
                     if ($status === 'DRAFT') {
+                        $invoice->setStatus('DRAFT');
                         $invoice->setInvoiceNumber("DRAFT-" . $uniqueSuffix);
-                        $invoice->setSentAt(null);
-                        $invoice->setDueDate(null);
-                        $invoice->setPaidAt(null);
-                        
-                        // Clear snapshot for drafts
-                        $invoice->setFrozenClientName(null);
-                        $invoice->setFrozenClientAddress(null);
-                        $invoice->setFrozenClientSiret(null);
-                        $invoice->setFrozenClientVat(null);
-                        $invoice->setFrozenClientCompanyName(null);
+                        // Drafts shouldn't have snapshots or dates usually
                     } else {
+                        // For SENT and PAID, we use your internal logic
                         $invoice->setInvoiceNumber("INV-2026-" . $uniqueSuffix);
                         
-                        // Dates
-                        $daysAgo = $faker->numberBetween(0, 60);
+                        $daysAgo = $faker->numberBetween(5, 60);
                         $sentDate = $now->modify("-$daysAgo days");
+                        
                         $invoice->setSentAt($sentDate);
                         $invoice->setDueDate($sentDate->modify('+30 days'));
-
-                        // Snapshot
-                        $invoice->setFrozenClientName($client->getFirstName() . ' ' . $client->getLastName());
-                        $invoice->setFrozenClientAddress($client->getAddress());
-                        $invoice->setFrozenClientSiret($client->getSiret());
-                        $invoice->setFrozenClientVat($client->getVatNumber());
-                        $invoice->setFrozenClientCompanyName($client->getCompanyName());
+                        
+                        // IMPORTANT: Use your new entity method to populate all frozen fields!
+                        $invoice->collectSnapshot();
 
                         if ($status === 'PAID') {
-                            $invoice->setPaidAt($now);
+                            $invoice->setStatus('PAID');
+                            // Paid sometime between sent date and now
+                            $invoice->setPaidAt($sentDate->modify('+' . rand(1, 15) . ' days'));
+                        } else {
+                            $invoice->setStatus('SENT');
                         }
                     }
 
                     $manager->persist($invoice);
 
-                    // 5. INVOICE ITEMS
+                    // 4. Create Invoice Items
                     $totalHT = 0.0;
                     $totalVAT = 0.0;
-                    $totalTTC = 0.0;
 
-                    for ($l = 1; $l <= rand(2, 5); $l++) { 
+                    for ($l = 1; $l <= rand(2, 5); $l++) {
                         $qty = $faker->numberBetween(1, 10);
-                        $unit = $faker->randomFloat(2, 50, 1000); 
+                        $unit = $faker->randomFloat(2, 50, 1000);
                         $vatRate = 20.0;
 
                         $lineHT = $qty * $unit;
@@ -133,27 +119,25 @@ class AppFixtures extends Fixture
                         $lineTTC = $lineHT + $lineVAT;
 
                         $item = new InvoiceItem();
-                        $item->setDescription($faker->sentence(4)); 
-                        
+                        $item->setDescription($faker->sentence(4));
                         $item->setQuantity((string) $qty);
                         $item->setUnitPrice((string) number_format($unit, 2, '.', ''));
                         $item->setVatRate((string) $vatRate);
-                        
                         $item->setTotalHt((string) number_format($lineHT, 2, '.', ''));
                         $item->setVatAmount((string) number_format($lineVAT, 2, '.', ''));
                         $item->setTotalTtc((string) number_format($lineTTC, 2, '.', ''));
-                        
                         $item->setInvoice($invoice);
+                        
                         $manager->persist($item);
 
                         $totalHT += $lineHT;
                         $totalVAT += $lineVAT;
-                        $totalTTC += $lineTTC;
                     }
 
+                    // 5. Finalize Invoice Totals
                     $invoice->setTotalHt((string) number_format($totalHT, 2, '.', ''));
                     $invoice->setTotalVat((string) number_format($totalVAT, 2, '.', ''));
-                    $invoice->setTotalAmount((string) number_format($totalTTC, 2, '.', ''));
+                    $invoice->setTotalAmount((string) number_format($totalHT + $totalVAT, 2, '.', ''));
                 }
             }
         }
