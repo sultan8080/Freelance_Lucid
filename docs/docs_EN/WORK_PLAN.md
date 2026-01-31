@@ -56,7 +56,7 @@
 - [x] **Tailwind Styling:** Apply full UI styling to the invoice form and line items.
 - [x] **HTML Template:** Professional layout including "Art. 293B" legal mentions.
 - [x] **Invoice Preview** Page: Read-only HTML view before PDF export.
-- [ ] **PDF Engine:** Integration of DomPDF for document generation.
+- [x] **PDF Engine:** Integration of DomPDF for document generation.
 - [ ] **Secure Export:** Protected routes for PDF downloads.
 
 ### Phase 8: Dashboard Insights (Analytics)

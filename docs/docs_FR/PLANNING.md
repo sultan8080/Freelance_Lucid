@@ -56,9 +56,9 @@
 - [X] **Intégration au Dashboard :** Déplacer les pages de factures dans le layout du tableau de bord (comme pour Clients).
 - [X] **Intégration du Routing :** Ajouter les factures dans la barre latérale + sécuriser l’accès avec InvoiceVoter.
 - [x] **Style Tailwind :** Appliquer le style UI complet au formulaire de facture et aux lignes d’articles.
-- [ ] **Template HTML :** Mise en page professionnelle incluant les mentions légales "Art. 293B".
+- [x] **Template HTML :** Mise en page professionnelle incluant les mentions légales "Art. 293B".
 - [x] **Page d’Aperçu de Facture :** Vue HTML en lecture seule avant l’export PDF.
-- [ ] **Moteur PDF :** Intégration de DomPDF pour la génération de documents.
+- [x] **Moteur PDF :** Intégration de DomPDF pour la génération de documents.
 - [ ] **Export Sécurisé :** Routes protégées pour les téléchargements PDF. 
 
 ### Phase 8 : Insights & Statistiques (Analytics)
