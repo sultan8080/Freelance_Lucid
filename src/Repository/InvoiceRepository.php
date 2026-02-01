@@ -27,7 +27,7 @@ class InvoiceRepository extends ServiceEntityRepository
             ->where('i.user = :user')
             ->andWhere('i.invoiceNumber LIKE :prefix')
             ->setParameter('user', $user)
-            ->setParameter('prefix', $prefix . '%') 
+            ->setParameter('prefix', $prefix . '%')
             ->orderBy('i.invoiceNumber', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
@@ -35,5 +35,87 @@ class InvoiceRepository extends ServiceEntityRepository
 
         // If a result is found, return the invoice number string; otherwise return null
         return $result ? $result['invoiceNumber'] : null;
+    }
+
+
+    // --- ANALYTICS METHODS ---
+    /**
+     * Get all PAID invoices for a specific year (For the Chart & Revenue)
+     */
+    public function findPaidInvoicesByYear(User $user, int $year): array
+    {
+        $startDate = new \DateTimeImmutable("$year-01-01 00:00:00");
+        $endDate = new \DateTimeImmutable("$year-12-31 23:59:59");
+
+        return $this->createQueryBuilder('i')
+            ->where('i.user = :user')
+            ->andWhere('i.status = :status')
+            ->andWhere('i.paidAt BETWEEN :startDate AND :endDate')
+            ->setParameter('user', $user)
+            ->setParameter('status', 'PAID')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->orderBy('i.paidAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Count total invoices for the year (Paid + Unpaid) (For KPI)
+     */
+    public function countInvoicesForYear(User $user, int $year): int
+    {
+        $startDate = new \DateTimeImmutable("$year-01-01 00:00:00");
+        $endDate = new \DateTimeImmutable("$year-12-31 23:59:59");
+
+        return $this->createQueryBuilder('i')
+            ->select('COUNT(i)')
+            ->where('i.user = :user')
+            ->andWhere('i.createdAt BETWEEN :startDate AND :endDate')
+            ->setParameter('user', $user)
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Get Top 5 Clients by Revenue (For the "Top Clients" List)
+     */
+    public function findTopClientsByRevenue(User $user, int $year, int $limit = 5): array
+    {
+        $startDate = new \DateTimeImmutable("$year-01-01 00:00:00");
+        $endDate = new \DateTimeImmutable("$year-12-31 23:59:59");
+
+        return $this->createQueryBuilder('i')
+            ->select('c.name AS clientName, SUM(i.amount) AS totalRevenue')
+            ->join('i.client', 'c')
+            ->where('i.user = :user')
+            ->andWhere('i.status = :status')
+            ->andWhere('i.paidAt BETWEEN :startDate AND :endDate')
+            ->setParameter('user', $user)
+            ->setParameter('status', 'PAID')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->groupBy('c.id')
+            ->orderBy('totalRevenue', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Get Pending Invoices (Sent but not Paid) (For "Activity Feed")
+     */
+    public function findPendingInvoices(User $user): array
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.user = :user')
+            ->andWhere('i.status = :status')
+            ->setParameter('user', $user)
+            ->setParameter('status', 'SENT')
+            ->orderBy('i.dueDate', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 }
