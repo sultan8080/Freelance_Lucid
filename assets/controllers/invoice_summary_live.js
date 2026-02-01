@@ -42,5 +42,16 @@ export default class extends Controller {
             this.urssafTarget.innerText = urssaf.toFixed(2) + " €";
             this.netTarget.innerText = (totalHt - urssaf).toFixed(2) + " €";
         }
+        // 4. Show/Hide Art. 293B legal mention
+
+        const vatExemptionNotice = document.getElementById("vat-293b");
+        if (vatExemptionNotice) {
+            if (Math.abs(totalVat) < 0.0001) {
+                vatExemptionNotice.textContent =
+                    "VAT not applicable (Micro-entrepreneur, VAT exemption - Article 293 B of the French Tax Code";
+            } else {
+                vatExemptionNotice.textContent = "";
+            }
+        }
     }
 }

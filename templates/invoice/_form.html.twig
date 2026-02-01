@@ -214,7 +214,7 @@
 
 		{% if form.invoiceItems|length == 0 %}
 			<div class="p-8 text-center text-slate-400 italic text-sm">
-				No items added yet. Click "Add New Item" to start.
+				Click "Add New Item" to add items to this invoice.
 			</div>
 		{% endif %}
 	</div>
@@ -265,10 +265,15 @@
 				<span class="text-lg font-bold text-slate-800">Total TTC</span>
 				<span class="text-lg font-extrabold text-primary font-mono" data-invoice-summary-target="totalTtc">0.00 €</span>
 			</div>
+			<hr class="my-4 border-slate-200">
+			<div id="vat-293b" class="text-xs text-slate-500 italic mt-2 text-center"></div>
+
 		</div>
+
 	</div>
 
 </div>
+
 {# END MAIN CONTENT WRAPPER #}
 
 {# BUTTONS #}
