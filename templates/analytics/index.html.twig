@@ -1,83 +1,221 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Business Analytics{% endblock %}
+{% block title %}Analytics -
+	{{ selected_year }}
+{% endblock %}
 
 {% block dashboard_content %}
-    {# Header #}
-    <div class="mb-10">
-        <h1 class="text-4xl font-extrabold text-primary tracking-tight mb-2">Analytics</h1>
-        <p class="text-slate-500 text-lg">Detailed insights into your business growth and tax ceilings.</p>
-    </div>
 
-    {# Row 1: The Revenue Ceiling (URSSAF / Auto-Entrepreneur) #}
-    <div class="glass-card rounded-[2.5rem] p-10 mb-10 shadow-sm border-slate-200/50">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-            <div>
-                <h2 class="text-2xl font-bold text-slate-900">Revenue Ceiling Tracker</h2>
-                <p class="text-slate-500">Auto-entrepreneur limit (Services): <span class="font-bold text-slate-700">77 700 €</span></p>
-            </div>
-            <div class="text-right">
-                <span class="text-3xl font-black text-primary">62%</span>
-            </div>
-        </div>
+	<div class="space-y-8 mb-10 ">
 
-        {# Progress Bar #}
-        <div class="w-full bg-slate-100 h-6 rounded-full overflow-hidden mb-4 p-1 shadow-inner">
-            {# Dummy width: 62% #}
-            <div class="bg-gradient-to-r from-indigo-500 to-primary h-full rounded-full transition-all duration-1000" style="width: 62%"></div>
-        </div>
-        
-        <div class="flex justify-between text-sm font-bold">
-            <span class="text-slate-400">0 €</span>
-            <span class="text-indigo-600">48 174 € generated</span>
-            <span class="text-slate-400">77 700 €</span>
-        </div>
-    </div>
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+			<div>
+				<h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Financial Insights</h1>
+				<p class="text-slate-500 mt-1">
+					Performance overview for Fiscal Year
+					<span class="font-semibold text-primary">{{ selected_year }}</span>
+				</p>
+			</div>
 
-    {# Row 2: Secondary Stats #}
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-        
-        {# URSSAF Estimation Card #}
-        <div class="glass-card p-8 rounded-bento border-l-4 border-rose-500">
-            <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center">
-                    <i class="fas fa-university text-xl"></i>
-                </div>
-                <div>
-                    <p class="text-slate-500 text-sm font-medium">Estimated Social Charges (21.2%)</p>
-                    <h3 class="text-3xl font-bold text-slate-900 tracking-tight">10 212,88 €</h3>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 italic">Calculated based on paid invoices for the current year.</p>
-        </div>
+			<form method="get" action="{{ path('app_analytics') }}">
+				<div
+					class="relative group">
+					{# Styled to match the 'New Invoice' button from dashboard #}
+					<select name="year" onchange="this.form.submit()" class="appearance-none bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-2xl focus:ring-primary focus:border-primary block w-32 px-4 py-2.5 shadow-sm cursor-pointer hover:bg-slate-50 transition-all outline-none">
+						{% for year in (current_year - 2)..(current_year + 1) %}
+							<option value="{{ year }}" {{ year == selected_year ? 'selected' : '' }}>
+								{{ year }}
+							</option>
+						{% endfor %}
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 group-hover:text-primary transition-colors">
+						<i class="fas fa-chevron-down text-xs"></i>
+					</div>
+				</div>
+			</form>
+		</div>
 
-        {# Conversion/Payment Speed Card #}
-        <div class="glass-card p-8 rounded-bento border-l-4 border-indigo-500">
-            <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                    <i class="fas fa-bolt text-xl"></i>
-                </div>
-                <div>
-                    <p class="text-slate-500 text-sm font-medium">Avg. Payment Time</p>
-                    <h3 class="text-3xl font-bold text-slate-900 tracking-tight">12.4 Days</h3>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 italic">Average time between sending an invoice and receiving payment.</p>
-        </div>
+		{# KPI Cards #}
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    </div>
+			{# Card: Revenue #}
+			<div class="glass-card p-6 rounded-bento hover:shadow-xl hover:-translate-y-1 transition-all group border-white/60">
+				<div class="flex items-center gap-4 mb-4">
+					<div
+						class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+						{# Kept SVG but styled like the FA icons in master #}
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					</div>
+					<div>
+						<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Revenue</p>
+						<h3 class="text-2xl font-bold text-slate-900 tracking-tight">{{ kpi.total_revenue|number_format(0, '.', ' ') }}
+							€</h3>
+					</div>
+				</div>
+			</div>
 
-    {# Row 3: Simple Monthly List (Placeholder for Chart) #}
-    <div class="glass-card rounded-[2.5rem] p-10">
-        <h2 class="text-2xl font-bold text-slate-900 mb-8">Monthly Breakdown</h2>
-        <div class="space-y-4">
-            {# Dummy Row #}
-            {% for month in ['January', 'February', 'March'] %}
-            <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-50/50 border border-slate-100 hover:bg-white hover:shadow-md transition-all">
-                <span class="font-bold text-slate-700">{{ month }} 2026</span>
-                <span class="font-mono font-bold text-emerald-600">+ 4 250,00 €</span>
-            </div>sym
-            {% endfor %}
-        </div>
-    </div>
+			{# Card: Average #}
+			<div class="glass-card p-6 rounded-bento hover:shadow-xl hover:-translate-y-1 transition-all group border-white/60">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+					</div>
+					<div>
+						<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Avg. Invoice</p>
+						<h3 class="text-2xl font-bold text-slate-900 tracking-tight">{{ kpi.avg_invoice|number_format(0, '.', ' ') }}
+							€</h3>
+					</div>
+				</div>
+			</div>
+
+			{# Card: Paid Ratio #}
+			<div class="glass-card p-6 rounded-bento hover:shadow-xl hover:-translate-y-1 transition-all group border-white/60">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					</div>
+					<div>
+						<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Paid Ratio</p>
+						<div class="flex items-baseline gap-2">
+							<h3 class="text-2xl font-bold text-slate-900 tracking-tight">{{ kpi.paid_ratio|round }}%</h3>
+							<span class="text-xs text-slate-500 font-medium">{{ kpi.total_count }}
+								inv.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{# Card: Ceiling #}
+			<div class="glass-card p-6 rounded-bento hover:shadow-xl hover:-translate-y-1 transition-all group border-white/60">
+				<div class="flex items-center justify-between mb-2">
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+						</div>
+						<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Status Ceiling</p>
+					</div>
+					<span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded-lg">{{ kpi.ceiling_limit|number_format(0, '.', ' ') }}€</span>
+				</div>
+
+				<div class="flex items-end justify-between mb-2">
+					<span class="text-2xl font-bold text-slate-900">{{ kpi.ceiling_percent|round(1) }}%</span>
+				</div>
+				<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+					<div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out" style="width: {{ kpi.ceiling_percent }}%"></div>
+				</div>
+			</div>
+		</div>
+
+		{# Main Chart & Top Clients #}
+		<div
+			class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+
+			{# Chart Area #}
+			<div class="lg:col-span-2 glass-card rounded-[2.5rem] p-8 shadow-sm border-slate-200/50">
+				<div class="flex items-center justify-between mb-6">
+					<div class="flex items-center gap-4">
+						<div class="w-2 h-8 bg-indigo-600 rounded-full"></div>
+						<h2 class="text-xl font-bold text-slate-900">Revenue Trend</h2>
+					</div>
+				</div>
+				<div class="relative h-80 w-full">
+					{{ render_chart(chart, {'class': 'absolute inset-0'}) }}
+				</div>
+			</div>
+
+			{# Top Clients List #}
+			<div class="glass-card rounded-[2.5rem] p-8 shadow-sm border-slate-200/50">
+				<div class="flex items-center gap-4 mb-6">
+					<div class="w-2 h-8 bg-emerald-500 rounded-full"></div>
+					<h2 class="text-xl font-bold text-slate-900">Top Clients</h2>
+				</div>
+
+				<ul class="space-y-4">
+					{% for client in lists.top_clients %}
+						<li class="flex justify-between items-center border-b border-slate-100 pb-3 last:border-0 last:pb-0 group hover:pl-2 transition-all">
+							<div class="flex items-center gap-3">
+								<div class="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 text-xs font-bold group-hover:bg-primary group-hover:text-white transition-colors">
+									{{ client.clientName|slice(0,2)|upper }}
+								</div>
+								<a href="{{ path('app_client_show', {id: client.clientId}) }}" class="text-slate-700 font-semibold group-hover:text-primary transition">
+									{{ client.clientName }}
+								</a>
+							</div>
+							<span class="font-bold text-slate-900 text-sm bg-slate-50 px-3 py-1 rounded-lg border border-slate-100">
+								{{ client.totalRevenue|number_format(0, '.', ' ') }}
+								€
+							</span>
+						</li>
+					{% else %}
+						<li class="text-slate-400 text-sm py-4 text-center italic">
+							No paid data for
+							{{ selected_year }}.
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		{#  Activity Feed (Pending)#}
+		<div class="glass-card rounded-[2.5rem] p-8 shadow-sm border-slate-200/50">
+			<div class="flex items-center gap-4 mb-6">
+				<div class="w-2 h-8 bg-amber-500 rounded-full"></div>
+				<h2 class="text-xl font-bold text-slate-900">Pending Payments</h2>
+			</div>
+
+			<div class="overflow-x-auto">
+				<table class="w-full text-left text-sm text-slate-500">
+					<thead class="uppercase text-xs text-slate-400 bg-slate-50/50 border-b border-slate-100">
+						<tr>
+							<th class="py-4 pl-6 rounded-tl-2xl font-bold">Client</th>
+							<th class="py-4 font-bold">Invoice #</th>
+							<th class="py-4 font-bold">Due Date</th>
+							<th class="py-4 font-bold">Amount (HT)</th>
+							<th class="py-4 text-right pr-6 rounded-tr-2xl font-bold">Status</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y divide-slate-100">
+						{% for invoice in lists.pending %}
+							<tr class="hover:bg-slate-50/80 transition group">
+								<td class="py-4 pl-6 font-semibold text-slate-700">
+									{{ invoice.frozenClientCompanyName ?: invoice.frozenClientName }}
+								</td>
+								<td class="py-4">
+									<a href="{{ path('app_invoice_show', {id: invoice.id}) }}" class="text-primary font-medium hover:underline hover:text-primary-hover">
+										{{ invoice.invoiceNumber }}
+									</a>
+								</td>
+								<td class="py-4 {{ invoice.isOverdue ? 'text-red-500 font-bold' : 'text-slate-500' }}">
+									{% if invoice.isOverdue %}
+										<i class="fas fa-exclamation-circle mr-1"></i>
+									{% endif %}
+									{{ invoice.dueDate|date('d M Y') }}
+								</td>
+								<td class="py-4 font-medium text-slate-700">{{ invoice.totalHt|number_format(2, '.', ' ') }}
+									€</td>
+								<td class="py-4 text-right pr-6">
+									<span class="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-50 text-amber-600 border border-amber-100">
+										{{ invoice.status }}
+									</span>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="5" class="py-12 text-center">
+									<div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-slate-300 mx-auto mb-3">
+										<i class="fas fa-check text-2xl"></i>
+									</div>
+									<p class="text-slate-900 font-medium">All caught up!</p>
+									<p class="text-slate-400 text-sm">No pending invoices found for this period.</p>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
 {% endblock %}
