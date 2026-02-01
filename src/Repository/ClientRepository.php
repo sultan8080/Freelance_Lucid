@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Client;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,43 +18,50 @@ class ClientRepository extends ServiceEntityRepository
     }
     // this following function is to fetch clients and filter them by name or email
     public function findBySearch($user, string $query): array
-{
-    $qb = $this->createQueryBuilder('c')
-        ->where('c.user = :user')
-        ->setParameter('user', $user);
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.user = :user')
+            ->setParameter('user', $user);
 
-    if ($query !== '') {
-        $qb->andWhere('c.firstName LIKE :q OR c.lastName LIKE :q OR c.email LIKE :q')
-           ->setParameter('q', '%' . $query . '%');
+        if ($query !== '') {
+            $qb->andWhere('c.firstName LIKE :q OR c.lastName LIKE :q OR c.email LIKE :q')
+                ->setParameter('q', '%' . $query . '%');
+        }
+
+        return $qb->orderBy('c.lastName', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
-    return $qb->orderBy('c.lastName', 'ASC')
-              ->getQuery()
-              ->getResult();
-}
+    /**
+     * Count total active.
+     */
+    public function countTotalClients(User $user): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->where('c.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
-    //    /**
-    //     * @return Client[] Returns an array of Client objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('c.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Count clients added specifically THIS MONTH (Growth metric).
+     */
+    public function countNewClientsThisMonth(User $user): int
+    {
+        $start = new \DateTimeImmutable('first day of this month 00:00:00');
+        $end = new \DateTimeImmutable('last day of this month 23:59:59');
 
-    //    public function findOneBySomeField($value): ?Client
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->where('c.user = :user')
+            ->andWhere('c.createdAt BETWEEN :start AND :end')
+            ->setParameter('user', $user)
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
