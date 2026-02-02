@@ -109,9 +109,6 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    /**
-     * Get Top 5 Clients by Revenue for a Given Year
-     */
     public function findTopClientsByRevenue(User $user, int $year, int $limit = 5): array
     {
         $startDate = new \DateTimeImmutable("$year-01-01 00:00:00");
@@ -147,15 +144,15 @@ class InvoiceRepository extends ServiceEntityRepository
     }
 
 
-    // HOME DASHBOARD METHODS //
+    // --- HOME DASHBOARD METHODS ---
 
     /**
-     * Get revenue strictly for the CURRENT month 
+     * Get revenue strictly for the SELECTED month passed in $date
      */
-    public function getCurrentMonthRevenue(User $user): float
+    public function getRevenueForMonth(User $user, \DateTimeInterface $date): float
     {
-        $start = new \DateTimeImmutable('first day of this month 00:00:00');
-        $end = new \DateTimeImmutable('last day of this month 23:59:59');
+        $start = \DateTimeImmutable::createFromInterface($date)->modify('first day of this month 00:00:00');
+        $end = \DateTimeImmutable::createFromInterface($date)->modify('last day of this month 23:59:59');
 
         $result = $this->createQueryBuilder('i')
             ->select('SUM(i.totalHt)')
@@ -173,21 +170,21 @@ class InvoiceRepository extends ServiceEntityRepository
     }
 
     /**
-     * 5 most recent invoices  
-    */
+     * 5 most recent invoices
+     */
     public function findRecentInvoices(User $user, int $limit = 5): array
     {
         return $this->createQueryBuilder('i')
             ->where('i.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('i.createdAt', 'DESC') // Newest first
+            ->orderBy('i.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }
 
     /**
-     * Count invoices by status 
+     * Count invoices by status
      */
     public function countByStatus(User $user, string $status): int
     {
