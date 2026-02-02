@@ -1,22 +1,35 @@
 {% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div 
-            data-controller="flash"
-            data-flash-duration-value="3000"
-            class="transition-all duration-300 p-4 m-6 border-l-4 shadow-sm 
-                {{ label == 'success' 
-                    ? 'bg-green-50 border-green-400 text-green-700' 
-                    : 'bg-red-50 border-red-400 text-red-700' 
-                }}"
-        >
-            <div class="flex items-center">
-                {% if label == 'success' %}
-                    <span class="mr-2">✅</span>
-                {% else %}
-                    <span class="mr-2">❌</span>
-                {% endif %}
-                <p class="text-sm font-medium">{{ message }}</p>
-            </div>
-        </div>
-    {% endfor %}
+	{% for message in messages %}
+		<div data-controller="flash" data-flash-duration-value="4000" class="relative overflow-hidden rounded-xl p-4 mb-4 border backdrop-blur-md shadow-lg transition-all duration-500 ease-in-out transform translate-y-0 opacity-100
+				            {{ label == 'success'
+				                ? 'bg-emerald-500/10 border-emerald-500/20 shadow-emerald-500/5'
+				                : 'bg-red-500/10 border-red-500/20 shadow-red-500/5'
+				            }}">
+			<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-white/5 to-transparent opacity-50 pointer-events-none"></div>
+
+			<div class="flex items-start gap-3 relative z-10">
+
+				<div class="shrink-0 mt-0.5">
+					{% if label == 'success' %}
+						<i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+					{% else %}
+						<i class="fa-solid fa-circle-exclamation text-red-400 text-lg"></i>
+					{% endif %}
+				</div>
+
+				<div class="flex-1">
+					<h4 class="text-sm font-bold {{ label == 'success' ? 'text-emerald-400' : 'text-red-400' }}">
+						{{ label == 'success' ? 'Success' : 'Error' }}
+					</h4>
+					<p class="text-sm font-medium leading-relaxed {{ label == 'success' ? 'text-emerald-100' : 'text-red-100' }} opacity-90">
+						{{ message|raw }}
+					</p>
+				</div>
+
+				<button type="button" data-action="click->flash#dismiss" class="text-white/40 hover:text-white transition-colors p-1" aria-label="Close">
+					<i class="fa-solid fa-xmark text-sm"></i>
+				</button>
+			</div>
+		</div>
+	{% endfor %}
 {% endfor %}
