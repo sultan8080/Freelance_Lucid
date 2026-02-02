@@ -1,92 +1,111 @@
-<div{{attributes}}>
-	<!-- component HTML -->
+<div{{ attributes }}>
+    <p class="text-slate-400 text-base md:text-lg mb-4 md:mb-8">
+        Manage your clients information
+    </p>
 
-	<p class="text-slate-500 text-base md:text-lg mb-4 md:mb-8">
-		Manage your clients Information
-	</p>
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full mb-6 md:mb-10">
+        
+        <div class="relative flex-1 w-full">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fas fa-search text-slate-500"></i>
+            </div>
+            <input type="text" 
+                   data-model="query" 
+                   placeholder="Search clients..." 
+                   class="w-full pl-11 pr-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all text-sm backdrop-blur-md">
+        </div>
 
-	<div class="flex flex-row items-center gap-4 w-full mb-6 md:mb-10">
-		<div class="flex-1">
-			<input type="text" data-model="query" placeholder="  Search clients..." class="w-full pl-11 pr-12 py-2.5 rounded-2xl border border-slate-200 bg-white/50 backdrop-blur-md
-						                   focus:ring-4 focus:ring-primary/10 transition-all outline-none text-sm md:text-base">
-		</div>
-		<div class="shrink-0">
-			<a href="{{ path('app_client_new')}}" class="inline-flex items-center justify-center whitespace-nowrap bg-primary text-white px-4 md:px-6 py-2.5 rounded-2xl text-xs md:text-sm font-semibold hover:bg-primary-hover shadow-indigo-glow transition-all hover:-translate-y-0.5">
-				<i class="fas fa-plus mr-2"></i>
-				Add Client
-			</a>
-		</div>
-	</div>
+        <div class="shrink-0 w-full sm:w-auto">
+            <a href="{{ path('app_client_new') }}" class="group relative flex items-center justify-center w-full sm:w-auto px-6 py-3 rounded-xl overflow-hidden shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02]">
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+                <span class="relative flex items-center gap-2 text-sm font-semibold text-white">
+                    <i class="fas fa-plus"></i>
+                    Add Client
+                </span>
+            </a>
+        </div>
+    </div>
 
-	{# Table Card #}
-	<div class="glass-card rounded-bento overflow-hidden">
-		<div class="overflow-x-auto">
-			<table class="w-full text-left border-collapse">
-				<thead>
-					<tr
-						class="bg-slate-50 border-b border-card-border">
-						{# Always Visible #}
-						<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-600">Name / Company</th>
+    {# Table Card (Dark Glass) #}
+    <div class="glass-card rounded-2xl overflow-hidden border border-white/10">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-white/5 bg-white/5">
+                        {# Name: Always Visible #}
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Name / Company</th>
 
-						{# Hidden on Mobile, Visible on Tablet/Desktop #}
-						<th class="!hidden md:!table-cell !whitespace-nowrap px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-600">Contact</th>
-						<th class="!hidden md:!table-cell !whitespace-nowrap px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-600">Address</th>
+                        {# Contact: Hidden on Mobile (!important) #}
+                        <th class="!hidden md:!table-cell !whitespace-nowrap px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Contact</th>
+                        
+                        {# Address: Hidden on Mobile (!important) #}
+                        <th class="!hidden md:!table-cell !whitespace-nowrap px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Address</th>
 
-						{# Always Visible #}
-						<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-600 text-right">Actions</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y divide-slate-100">
-					{% for client in this.clients %}
-						<tr
-							class="hover:bg-slate-50 transition-colors">
-							{# Always Visible #}
-							<td class="px-6 py-4 whitespace-nowrap">
-								<div class="font-semibold text-slate-900 text-sm md:text-base">{{ client.fullName }}
-								</div>
-								<div class="text-xs text-slate-500">{{ client.companyName ?: 'Individual' }}</div>
-							</td>
+                        {# Actions: Always Visible #}
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    {% for client in this.clients %}
+                        <tr class="hover:bg-white/5 transition-colors group">
+                            
+                            {# Name Column #}
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center text-xs font-bold text-white border border-white/10">
+                                        {{ client.fullName|slice(0,2)|upper }}
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-white text-sm md:text-base group-hover:text-blue-400 transition-colors">{{ client.fullName }}</div>
+                                        <div class="text-xs text-slate-500">{{ client.companyName ?: 'Individual' }}</div>
+                                    </div>
+                                </div>
+                            </td>
 
-							{# Email: Hidden on Mobile #}
-							<td class="!hidden md:!table-cell px-6 py-4 !whitespace-nowrap text-sm text-slate-600">
-								<div class="flex flex-col">
-									<span class="font-medium text-slate-700">{{ client.email }}</span>
-									<span class="text-xs text-slate-400 truncate max-w-[200px]">{{ client.phoneNumber }}</span>
-								</div>
-							</td>
+                            {# Email Column: Hidden on Mobile (!important) #}
+                            <td class="!hidden md:!table-cell px-6 py-4 !whitespace-nowrap text-sm">
+                                <div class="flex flex-col">
+                                    <span class="font-medium text-slate-300">{{ client.email }}</span>
+                                    <span class="text-xs text-slate-500">{{ client.phoneNumber }}</span>
+                                </div>
+                            </td>
 
-							{# Contact: Hidden on Mobile #}
-							<td class=" !hidden md:!table-cell !whitespace-nowrap  px-6 py-4 text-sm text-slate-600">
-								<div class="flex flex-col">
-									<span class="font-medium text-slate-700">{{ client.address }}</span>
-									<span class="text-xs text-slate-400 truncate max-w-[200px]">{{ client.postCode }} {{ client.city }}</span>
-								</div>
-							</td>
+                            {# Address Column: Hidden on Mobile (!important) #}
+                            <td class="!hidden md:!table-cell !whitespace-nowrap px-6 py-4 text-sm">
+                                <div class="flex flex-col">
+                                    <span class="font-medium text-slate-300 truncate max-w-[150px]">{{ client.address }}</span>
+                                    <span class="text-xs text-slate-500">{{ client.postCode }} {{ client.city }}</span>
+                                </div>
+                            </td>
 
-							{# Actions: Always Visible Hide the vertical divider on mobile 
-																																											#}
-							<td class="px-6 py-4 text-right">
-								<div class="flex justify-end gap-2">
-									<a href="{{ path('app_client_show', {id: client.id}) }}" class="p-2 hover:bg-white rounded-lg text-slate-400 hover:text-primary transition-all">
-										<i class="fas fa-eye"></i>
-									</a>
+                            {# Actions Column #}
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <a href="{{ path('app_client_show', {id: client.id}) }}" class="p-2 rounded-lg text-slate-500 hover:bg-blue-500/10 hover:text-blue-400 transition-all" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
 
-									<span class="text-slate-200">|</span>
-									<a href="{{ path('app_client_edit', {id: client.id}) }}" class="p-2 hover:bg-white rounded-lg text-slate-400 hover:text-primary transition-all">
-										<i class="fas fa-edit"></i>
-									</a>
-								</div>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="4" class="px-6 py-12 text-center text-slate-500 italic bg-slate-50">
-								No clients found.
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
+                                    <a href="{{ path('app_client_edit', {id: client.id}) }}" class="p-2 rounded-lg text-slate-500 hover:bg-purple-500/10 hover:text-purple-400 transition-all" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="px-6 py-12 text-center">
+                                <div class="flex flex-col items-center justify-center gap-3">
+                                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-600">
+                                        <i class="fas fa-users-slash text-xl"></i>
+                                    </div>
+                                    <p class="text-slate-500 italic">No clients found.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
