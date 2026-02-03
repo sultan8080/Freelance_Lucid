@@ -32,9 +32,9 @@
 						class="border-b border-white/5 bg-white/5">
 
 						{# Index: Hidden on Mobile (!important) #}
-						<th class="px-2 py-4 text-center text-xs font-bold !hidden md:!table-cell !whitespace-nowrap uppercase tracking-wider text-slate-400">
+						{# <th class="px-2 py-4 text-center text-xs font-bold !hidden md:!table-cell !whitespace-nowrap uppercase tracking-wider text-slate-400">
 							Index
-						</th>
+						</th> #}
 
 						{# Invoice Info: Always Visible #}
 						<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -64,11 +64,11 @@
 							class="hover:bg-white/5 transition-colors group">
 
 							{# Index #}
-							<td class="px-2 py-4 !hidden md:!table-cell !whitespace-nowrap text-center align-top pt-5">
+							{# <td class="px-2 py-4 !hidden md:!table-cell !whitespace-nowrap text-center align-top pt-5">
 								<div class="text-slate-500 text-xs font-mono">
 									{{ invoice.id }}
 								</div>
-							</td>
+							</td> #}
 
 							{# Invoice Info Column (With Avatar Added) #}
 							<td class="px-6 py-4 align-top pt-4">
@@ -155,7 +155,7 @@
 							</td>
 
 							{# Project Column #}
-							<td class="px-6 py-4 !hidden md:!table-cell !whitespace-nowrap text-left align-top pt-5 max-w-[150px] xl:max-w-[250px]">
+							<td class="px-6 py-4 !hidden md:!table-cell !whitespace-nowrap text-left align-top pt-5">
 								<div class="text-slate-200 text-sm font-medium truncate">
 									{{ invoice.projectTitle ?: 'No Project Title'}}
 								</div>

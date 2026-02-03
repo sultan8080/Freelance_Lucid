@@ -183,8 +183,8 @@ class InvoiceRepository extends ServiceEntityRepository
     public function findRecentInvoices(User $user, int $limit = 5): array
     {
         return $this->createQueryBuilder('i')
-            ->addSelect('c')            // ADD THIS: Dashboard needs client names
-            ->leftJoin('i.client', 'c') // ADD THIS
+            ->addSelect('c')           
+            ->leftJoin('i.client', 'c') 
             ->where('i.user = :user')
             ->setParameter('user', $user)
             ->orderBy('i.createdAt', 'DESC')
@@ -219,8 +219,9 @@ class InvoiceRepository extends ServiceEntityRepository
             ->leftJoin('i.invoiceItems', 'it')
             ->where('i.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('i.id', 'DESC')
+            ->orderBy('i.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
+  
 }
