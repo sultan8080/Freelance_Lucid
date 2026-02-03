@@ -16,7 +16,7 @@ class InvoiceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Invoice::class);
     }
-
+    
     /**
      * Finds the last invoice number for a given user with a specific prefix.
      */
@@ -56,6 +56,8 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
 
     public function getYearlyTotalByYear(User $user, int $year): float
     {
