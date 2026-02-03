@@ -223,5 +223,25 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-  
+    public function searchInvoices(User $user, string $query): array
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->addSelect('c', 'it')             
+            ->leftJoin('i.client', 'c')
+            ->leftJoin('i.invoiceItems', 'it')
+            ->where('i.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('i.createdAt', 'DESC') ; 
+        if ($query) {
+            $qb->andWhere('
+                i.invoiceNumber LIKE :query OR 
+                i.projectTitle LIKE :query OR 
+                c.companyName LIKE :query OR 
+                c.firstName LIKE :query OR 
+                c.lastName LIKE :query
+            ')
+                ->setParameter('query', '%' . $query . '%');
+        }
+        return $qb->getQuery()->getResult();
+    }
 }
