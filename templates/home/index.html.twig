@@ -4,46 +4,89 @@
 {% endblock %}
 
 {% block body %}
-	<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
-		<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+	<div class="flex items-center gap-6" data-controller="layout" data-action="click@window->layout#closeUserDropdown">
+		<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
+			<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
-			<a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
-				<div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
-					<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
-					<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
-					<i class="fa-brands fa-slack  text-white font-bold relative z-10 text-md"></i>
-				</div>
-				<div class="text-lg font-semibold tracking-tight">
-					<span class="text-white">Freelance</span>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
-				</div>
-			</a>
-
-			<div class="flex items-center gap-6">
-				<div class="relative group">
-					<button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors">
-						<i class="fa-solid fa-earth-europe opacity-50 group-hover:opacity-100"></i>
-						<span class="opacity-65 group-hover:opacity-100">EN</span>
-						<i class="fa-solid fa-chevron-down opacity-50 group-hover:opacity-100 text-xs"></i>
-					</button>
-					<div class="absolute right-0 top-full mt-2 w-24 py-1 rounded-lg bg-slate-900 border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
-						<a href="#" class="block px-3 py-2 text-xs font-medium text-white bg-white/5 text-center">EN</a>
-						<a href="#" class="block px-3 py-2 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 text-center">FR</a>
+				<a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
+					<div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+						<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
+						<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
+						<i class="fa-brands fa-slack  text-white font-bold relative z-10 text-md"></i>
 					</div>
-				</div>
-
-				<div class="h-4 w-px bg-white/20 hidden sm:block"></div>
-
-				<a href="{{ path('app_login') }}" class="text-sm font-medium text-slate-300 hover:text-white transition hidden sm:block">Sign in</a>
-
-				<a href="{{ path('app_register') }}" class="group relative px-6 py-2.5 rounded-full overflow-hidden transition-all duration-300">
-					<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-					<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
-					<span class="relative text-sm font-semibold text-white">Sign up</span>
+					<div class="text-lg font-semibold tracking-tight">
+						<span class="text-white">Freelance</span>
+						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
+					</div>
 				</a>
+
+				<div class="flex items-center gap-6">
+					<div class="relative group">
+						<button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+							<i class="fa-solid fa-earth-europe opacity-50 group-hover:opacity-100"></i>
+							<span class="opacity-65 group-hover:opacity-100">EN</span>
+							<i class="fa-solid fa-chevron-down opacity-50 group-hover:opacity-100 text-xs"></i>
+						</button>
+						<div class="absolute right-0 top-full mt-2 w-24 py-1 rounded-lg bg-slate-900 border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+							<a href="#" class="block px-3 py-2 text-xs font-medium text-white bg-white/5 text-center">EN</a>
+							<a href="#" class="block px-3 py-2 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 text-center">FR</a>
+						</div>
+					</div>
+
+					<div class="h-4 w-px bg-white/20 hidden sm:block"></div>
+
+					{% if app.user %}
+						{# Logged In: Show User Dropdown #}
+						<div class="relative">
+							<button data-action="click->layout#toggleUserDropdown:stop" class="flex items-center gap-3 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/5 transition-all active:scale-95">
+								<span class="hidden sm:block text-sm font-medium text-slate-300">
+									Hi,
+									{{app.user.firstName }}
+
+									{{ app.user.lastName }}</span>
+
+								<div class="w-8 h-8 rounded bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-xs text-white font-bold shadow-lg shadow-blue-500/20">
+									{{ (app.user.firstName|slice(0, 1) ~ app.user.lastName|slice(0, 1))|upper }}
+								</div>
+								<i data-layout-target="userChevron" class="fas fa-chevron-down text-[10px] text-slate-500 transition-transform duration-300"></i>
+							</button>
+
+							<div data-layout-target="userDropdown" class="hidden absolute right-0 mt-3 w-64 bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 z-50 transform origin-top-right transition-all">
+								<div class="px-4 py-3 mb-1 border-b border-white/5">
+									<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Signed in as</p>
+									<p class="text-sm font-bold text-white truncate">{{ app.user ? app.user.userIdentifier : 'guest' }}</p>
+								</div>
+								<a href="{{ path('dashboard_freelancer') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
+									<i class="fas fa-th-large w-4 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
+									Dashboard
+								</a>
+								<a href="{{ path('app_profile_edit') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
+									<i class="fas fa-user-circle w-5 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
+									My Profile
+								</a>
+								<div class="my-2 border-t border-white/5"></div>
+								<a href="{{ path('app_logout')|default('#') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-red-500/10 text-red-400 rounded-xl transition-all text-sm font-semibold group">
+									<i class="fas fa-sign-out-alt w-5 text-center group-hover:text-red-300"></i>
+									Logout
+								</a>
+							</div>
+						</div>
+					{% else %}
+						{# Logged Out: Show Sign In / Sign Up #}
+						<div class="h-4 w-px bg-white/20 hidden sm:block"></div>
+
+						<a href="{{ path('app_login') }}" class="text-sm font-medium text-slate-300 hover:text-white transition hidden sm:block">Sign in</a>
+
+						<a href="{{ path('app_register') }}" class="group relative px-6 py-2.5 rounded-full overflow-hidden transition-all duration-300">
+							<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+							<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+							<span class="relative text-sm font-semibold text-white">Sign up</span>
+						</a>
+					{% endif %}
+				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 
 	<main class="relative pt-40 pb-32">
 		<div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
@@ -68,7 +111,7 @@
 
 			<p class="mt-6 max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed">
 				An all-in-one platform designed for French micro-entrepreneurs.
-												                Simple invoicing, tax estimates, and revenue tracking - fully compliant.
+																												                Simple invoicing, tax estimates, and revenue tracking - fully compliant.
 			</p>
 
 			<div class="mt-10 mb-20 flex flex-col sm:flex-row justify-center gap-4">

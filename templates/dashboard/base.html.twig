@@ -58,9 +58,14 @@
 
 					<div class="relative">
 						<button data-action="click->layout#toggleUserDropdown:stop" class="flex items-center gap-3 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/5 transition-all active:scale-95">
-							<span class="hidden sm:block text-sm font-medium text-slate-300">{{ app.user ? app.user.userIdentifier : 'Guest' }}</span>
-							<div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-xs text-white font-bold shadow-lg shadow-blue-500/20">
-								{{ app.user ? app.user.userIdentifier|slice(0, 2)|upper : 'ME' }}
+							<span class="hidden sm:block text-sm font-medium text-slate-300">
+								Hi,
+								{{app.user.firstName }}
+							
+								{{ app.user.lastName }}</span>
+
+							<div class="w-8 h-8 rounded bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-xs text-white font-bold shadow-lg shadow-blue-500/20">
+								{{ (app.user.firstName|slice(0, 1) ~ app.user.lastName|slice(0, 1))|upper }}
 							</div>
 							<i data-layout-target="userChevron" class="fas fa-chevron-down text-[10px] text-slate-500 transition-transform duration-300"></i>
 						</button>
@@ -70,6 +75,10 @@
 								<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Signed in as</p>
 								<p class="text-sm font-bold text-white truncate">{{ app.user ? app.user.userIdentifier : 'guest' }}</p>
 							</div>
+							<a href="{{ path('app_home') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
+								<i class="fas fa-home w-4 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
+								Home Page
+							</a>
 							<a href="{{ path('app_profile_edit') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
 								<i class="fas fa-user-circle w-5 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
 								My Profile
