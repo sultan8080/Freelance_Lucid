@@ -225,21 +225,20 @@ class InvoiceRepository extends ServiceEntityRepository
     public function searchInvoices(User $user, string $query, string $status = ''): array
     {
         $qb = $this->createQueryBuilder('i')
-            ->addSelect('c', 'it')
+            ->addSelect('c')
             ->leftJoin('i.client', 'c')
-            ->leftJoin('i.invoiceItems', 'it')
             ->where('i.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('i.createdAt', 'DESC');
+            ->orderBy('i.createdAt', 'DESC')
+            ->setMaxResults(50);
 
         // query by text inside search field
         if ($query) {
             $qb->andWhere('
                 i.invoiceNumber LIKE :query OR 
-                i.projectTitle LIKE :query OR 
                 c.companyName LIKE :query OR 
-                c.firstName LIKE :query OR 
-                c.lastName LIKE :query
+                i.pojectTitle Like:query
+
             ')
                 ->setParameter('query', '%' . $query . '%');
         }
