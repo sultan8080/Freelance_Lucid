@@ -19,30 +19,20 @@ final class SettingsController extends AbstractController
         if (!$user) {
             return $this->redirectToRoute('app_login');
         }
-    
-        // 1. Get the current logged-in user
         $user = $this->getUser();
-
-        // 2. Create the form using the UserType (for Freelancer) we built
         $form = $this->createForm(UserType::class, $user);
-
-        // 3. Handle the form submission
         $form->handleRequest($request);
-
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                // SUCCESS CASE
                 $entityManager->flush();
                 $this->addFlash('success', 'Profile updated successfully!');
 
                 return $this->redirectToRoute('app_profile_edit');
-            } else {
-                // ERROR CASE
-                $this->addFlash('error', 'There was an error updating your profile. Please check the fields below.');
             }
         }
+        $statusCode = ($form->isSubmitted() && !$form->isValid()) ? 422 : 200;
         return $this->render('settings/profile.html.twig', [
             'userForm' => $form->createView(),
-        ]);
+        ], new Response(null, $statusCode));
     }
 }

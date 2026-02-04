@@ -1,0 +1,177 @@
+{{ form_start(userForm, {
+    'attr': {
+        'class': 'p-8 space-y-10', 
+        'id': 'user_profile_form',
+        'novalidate': 'novalidate' 
+    }
+}) }}
+
+
+{% if not userForm.vars.valid %}
+	<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-start gap-3">
+		<i class="fas fa-exclamation-triangle mt-0.5"></i>
+		<div>
+			<span class="font-bold">Please correct the errors below:</span>
+			{{ form_errors(userForm) }}
+		</div>
+	</div>
+{% endif %}
+
+<div class="space-y-6">
+	<div class="flex items-center gap-3 mb-4">
+		<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400">
+			<i class="fas fa-user text-xs"></i>
+		</div>
+		<h3 class="text-xs font-black uppercase tracking-widest text-blue-400">Owner Identity</h3>
+	</div>
+
+
+	<div class="group">
+		{{ form_label(userForm.email, 'Account Email', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+		{{ form_widget(userForm.email, {
+                'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-slate-800 text-slate-500 cursor-not-allowed focus:outline-none transition-all'}
+            }) }}
+	</div>
+
+	<div
+		class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+		<div class="group">
+			{{ form_label(userForm.firstName, 'First Name', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+			{{ form_widget(userForm.firstName, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-slate-600'}}) }}
+			{% if userForm.firstName.vars.errors|length > 0 %}
+				<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.firstName)|striptags }}</p>
+			{% endif %}
+		</div>
+
+		<div class="group">
+			{{ form_label(userForm.lastName, 'Last Name', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+			{{ form_widget(userForm.lastName, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-slate-600'}}) }}
+			{% if userForm.lastName.vars.errors|length > 0 %}
+				<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.lastName)|striptags }}</p>
+			{% endif %}
+		</div>
+
+		<div class="group md:col-span-2">
+			{{ form_label(userForm.phoneNumber, 'Phone Number', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+			<div class="relative">
+				<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+					<i class="fas fa-phone text-slate-600 text-xs"></i>
+				</div>
+				{{ form_widget(userForm.phoneNumber, {'attr': {'class': 'w-full pl-10 pr-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-slate-600'}}) }}
+			</div>
+			{% if userForm.phoneNumber.vars.errors|length > 0 %}
+				<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.phoneNumber)|striptags }}</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+
+<div class="space-y-6 pt-6 border-t border-white/5">
+	<div class="flex items-center gap-3 mb-4">
+		<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400">
+			<i class="fas fa-briefcase text-xs"></i>
+		</div>
+		<h3 class="text-xs font-black uppercase tracking-widest text-purple-400">Legal Information</h3>
+	</div>
+
+	<div
+		class="space-y-6">
+		<div class="group">
+			{{ form_label(userForm.companyName, 'Legal Company Name', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+			{{ form_widget(userForm.companyName, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600'}}) }}
+			{% if userForm.companyName.vars.errors|length > 0 %}
+				<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.companyName)|striptags }}</p>
+			{% endif %}
+		</div>
+
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div class="group">
+				<div class="flex justify-between">
+					{{ form_label(userForm.siretNumber, 'SIRET Number', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+					<span class="text-[10px] text-slate-500 mt-1 uppercase tracking-wide">14 Digits</span>
+				</div>
+
+				{% set siretHasError = userForm.siretNumber.vars.errors|length > 0 %}
+				{{ form_widget(userForm.siretNumber, {
+                        'attr': {'class': 'w-full px-5 py-3 rounded-xl border bg-white/5 text-white focus:outline-none focus:ring-1 transition-all placeholder:text-slate-600 font-mono tracking-wide ' ~ (siretHasError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500' : 'border-white/10 focus:border-purple-500/50 focus:ring-purple-500/50')}
+                    }) }}
+				{% if siretHasError %}
+					<p class="text-red-400 text-xs mt-1 ml-1 animate-pulse">{{ form_errors(userForm.siretNumber)|striptags }}</p>
+				{% endif %}
+			</div>
+			<div class="group">
+				<div class="flex justify-between">
+					{{ form_label(userForm.vatNumber, 'VAT Number', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+					<span class="text-[10px] text-slate-500 mt-1 uppercase tracking-wide">Optional</span>
+				</div>
+				{{ form_widget(userForm.vatNumber, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600 font-mono tracking-wide'}}) }}
+				{% if userForm.vatNumber.vars.errors|length > 0 %}
+					<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.vatNumber)|striptags }}</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="space-y-6 pt-6 border-t border-white/5">
+	<div class="flex items-center gap-3 mb-4">
+		<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400">
+			<i class="fas fa-map-marker-alt text-xs"></i>
+		</div>
+		<h3 class="text-xs font-black uppercase tracking-widest text-purple-400">Business Location</h3>
+	</div>
+
+	<div
+		class="space-y-6">
+		<div class="group">
+			{{ form_label(userForm.address, 'Street Address', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+			{{ form_widget(userForm.address, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600'}}) }}
+			{% if userForm.address.vars.errors|length > 0 %}
+				<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.address)|striptags }}</p>
+			{% endif %}
+		</div>
+
+		<div
+			class="grid grid-cols-1 md:grid-cols-12 gap-6">
+			<div class="group md:col-span-3">
+				{{ form_label(userForm.postCode, 'Post Code', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+				{{ form_widget(userForm.postCode, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600'}}) }}
+				{% if userForm.postCode.vars.errors|length > 0 %}
+					<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.postCode)|striptags }}</p>
+				{% endif %}
+			</div>
+			<div class="group md:col-span-5">
+				{{ form_label(userForm.city, 'City', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+				{{ form_widget(userForm.city, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600'}}) }}
+				{% if userForm.city.vars.errors|length > 0 %}
+					<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.city)|striptags }}</p>
+				{% endif %}
+			</div>
+
+			<div class="group md:col-span-4">
+				{{ form_label(userForm.country, 'Country', {'label_attr': {'class': 'block text-xs font-bold text-slate-400 mb-2 ml-1'}}) }}
+				{{ form_widget(userForm.country, {'attr': {'class': 'w-full px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all placeholder:text-slate-600'}}) }}
+				{% if userForm.country.vars.errors|length > 0 %}
+					<p class="text-red-400 text-xs mt-1 ml-1">{{ form_errors(userForm.country)|striptags }}</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pt-8 flex items-center justify-end border-t border-white/5 mt-6">
+	<button type="submit" class="group relative px-8 py-4 rounded-xl overflow-hidden shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95">
+		<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+		<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+		<span class="relative text-sm font-bold text-white flex items-center gap-3">
+			<i class="fas fa-save"></i>
+			Save Profile
+		</span>
+	</button>
+</div>
+
+{{ form_end(userForm) }}
