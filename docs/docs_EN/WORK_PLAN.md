@@ -1,9 +1,11 @@
 # Project Roadmap — Freelance Flow
 
 ## Part 1: The MVP (Minimum Viable Product)
-*Goal: A functional app to manage, calculate, and export invoices.*
+
+_Goal: A functional app to manage, calculate, and export invoices._
 
 ### Phase 1: Architecture & Authentication
+
 - [x] Symfony 7.4 Webapp initialization.
 - [x] Database configuration (MySQL).
 - [x] `User` entity & Login/Logout system.
@@ -11,6 +13,7 @@
 - [x] Tailwind CSS integration via AssetMapper.
 
 ### Phase 2: Data Modeling & Business Logic
+
 - [x] **Database Design:** Create and document the database schema (MCD, MLD, ERD) via Mocodo.net.
 - [x] **Entity Client:** Create the entity + link to User (Freelancer).
 - [x] **Entity Invoice:** Create the entity with fields (number, date, status, due date).
@@ -18,6 +21,7 @@
 - [x] **Data Security (Voters):** Ensure a Freelancer can only see their own clients and invoices.
 
 ### Phase 3: The Complete CRM & Profile Build
+
 - [x] **Role Setup:** Define ROLE_ADMIN vs ROLE_USER in security.yaml.
 - [x] **Profile Form (UserType):** Create a form for professional data (SIRET, VAT, Company Name, Address).
 - [x] **Account Settings:** Build SettingsController to allow freelancers to complete their professional identity.
@@ -26,6 +30,7 @@
 - [x] **Basic Filtering:** Ensure the list only shows clients linked to a user (pre-Voter stage).
 
 ### Phase 4: Global Interface, Security & Data Integrity
+
 - [x] **Global Layout (Sidebar):** Redesign base.html.twig with a professional navigation (Dashboard, Clients, Invoices, Settings).
 - [x] **Freelance Dashboard:** Create the DashboardController for the user’s home page.
 - [x] **Vanilla JS Design System:** Integrate the “Glassmorphism” dashboard structure with native JS logic for the sidebar and dropdown menus.
@@ -33,6 +38,7 @@
 - [x] **Basic Entity Validation:** Add essential server‑side validation rules (NotBlank, Email, Length, UniqueEntity) to stabilize the Client CRUD.
 
 ### Phase 5: Invoicing Engine (Backend & Logic)
+
 - [x] **Security Voters:** Implement `ClientVoter` for multi‑tenant data isolation.
 - [x] **Access Control:** Finalize security.yaml to protect all routes requiring authentication.
 - [x] **Entity Refactor:** Add a direct `User` relation to the `Invoice` entity.
@@ -42,6 +48,7 @@
 - [x] **Numbering Service:** Implement `InvoiceNumberGenerator` (e.g., FF-2026-001).
 
 ### Phase 6 : Facturation Dynamique (Interface UI)
+
 - [x] **Financial Service:** Implement `InvoiceCalculator` for subtotal, VAT, and totals.
 - [x] **Lifecycle Logic:** Implement DRAFT vs PAID statuses. Ensure PAID invoices are immutable (locked).
 - [x] **The Snapshot** System: Add columns to the Invoice entity to "freeze" client personal data
@@ -51,6 +58,7 @@
 - [x] **Live Totals:** Real-time JS updates so the user sees the price change as they type.
 
 ### Phase 7 : Design Documentaire & Export
+
 - [x] **Dashboard Integration:** Move invoice pages into the dashboard layout (same as Clients).
 - [x] **Routing Integration:** Add invoices to the sidebar + secure access with InvoiceVoter.
 - [x] **Tailwind Styling:** Apply full UI styling to the invoice form and line items.
@@ -60,38 +68,61 @@
 - [x] **Secure Export:** Protected routes for PDF downloads.
 
 ### Phase 8: Dashboard Insights (Analytics)
+
 - [x] **KPI Widgets:** Monthly/Yearly revenue tracking.
 - [x] **Ceiling Tracker:** Progress bar for auto-entrepreneur revenue limits.
 - [x] **Activity Feed:** Quick view of pending/overdue invoices.
 
 ### Phase 9: UX Optimization & Polish
+
 - [x] **Flash Message System:** Professional toast notifications for CRUD actions (Success/Error).
 - [x] **Empty State Designs:** Create high-quality placeholder views for users with 0 clients or invoices.
 - [x] **Navigation Refinement:** Add "Active" states to sidebar links to show the user where they are.
 - [x] **Form Validation:** Enhance client-side and server-side error messaging for better user guidance.
 
-### Phase 10: Performance & Deployment Readiness
-- [x] **SQL Query Tuning:** Implement Eager Loading (`JOIN`) in Repositories to eliminate N+1 query issues.
-- [x] **Legal Verification:** Final check of French mandatory mentions (SIRET, VAT logic, Art. 293B).
-- [ ] **Production Config:** Setup environment variables (`.env.local`), security headers, and asset compression.
-- [ ] **Project Documentation:** Complete the `README.md` with installation and contribution guides.
+### Phase 10: Performance, Auth Enhancements & Deployment Readiness
+
+- [x] **SQL Query Tuning:** Implemented Eager Loading (JOIN) to eliminate N+1 query issues.
+- [x] **Fixture Integrity:** Deferred persist and `ReflectionProperty` usage for realistic data history.
+- [x] **Profile Workflow:** Separated `/profile` (read-only) and `/profile/edit` with Turbo form validation.
+- [x] **UI Styling:** Full "Glassmorphism" restyling of the user profile forms.
+- [x] **Legal Verification:** Art. 293B (VAT) mentions + automated SIRET/VAT logic.
+- [x] **Live Search:** Multi-criteria search (Invoice #, Client, Project) using `LiveProp`.
+- [ ] **Invoice Filtering:** Dynamic filtering by status (Draft, Sent, Paid, Overdue) using Live Components.
 
 ---
 
 ## Part 2: Version 2 (Planned Evolutions)
 
-### Phase 11: Email Automation
-- [ ] Direct PDF delivery via Symfony Mailer.
-- [ ] Customizable email templates.
+### Phase 11: Advanced UX & Deployment Readiness
+
+#### Part A: Communication & Security (The "Features")
+
+- [ ] **Internationalization (i18n):** Implement EN/FR support across the UI (Translations, Localized Routing, and Locale Switcher).
+- [ ] **Email Verification:** Implement post-registration verification via `VerifyEmailBundle` (Mailtrap config for testing).
+- [ ] **Password Reset:** Secure reset flows with expiring tokens and styled email templates.
+- [ ] **Remember Me:** Secure "Remember Me" activation with token rotation.
+- [ ] **Direct PDF Delivery:** Automated email delivery of invoices to clients.
+- [ ] **Customizable Email Templates:** Create Glassmorphism-styled HTML emails consistent with the dashboard UI.
+
+#### Part B: The Professional Polish
+
+- [ ] **Data Deletion Logic:** Enable users to delete their account and associated data safely (GDPR compliance).
+- [ ] **Production Config:** Setup `.env.local` secrets, CSP/HSTS, and secure production headers.
+- [ ] **Asset Pipeline:** Finalize minification and compression via AssetMapper (`asset-map:compile`).
+- [ ] **Project Documentation:** Complete the `README.md` with live demo link, technical architecture, and installation guide.
 
 ### Phase 12: Sales Cycle (Quotes)
-- [ ] Quote/Estimate management.
-- [ ] One-click "Convert to Invoice" feature.
+
+- [ ] **Quote/Estimate Management:** Create and track quotes.
+- [ ] **Conversion Logic:** One-click "Convert Quote to Invoice" feature.
 
 ### Phase 13: Online Payments
-- [ ] Stripe API integration for credit card payments.
-- [ ] Automated "Paid" status updates via Webhooks.
+
+- [ ] **Stripe Integration:** Payment gateway integration for credit card payments.
+- [ ] **Webhooks:** Automated "Paid" status updates upon successful transaction.
 
 ### Phase 14: API & DevOps
-- [ ] Data exposure via REST API (JWT).
-- [ ] Docker containerization for production.
+
+- [ ] **API Exposure:** Data access via REST API (JWT Authentication).
+- [ ] **Containerization:** Docker setup for consistent production environments.
