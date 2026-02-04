@@ -183,8 +183,8 @@ class InvoiceRepository extends ServiceEntityRepository
     public function findRecentInvoices(User $user, int $limit = 5): array
     {
         return $this->createQueryBuilder('i')
-            ->addSelect('c')           
-            ->leftJoin('i.client', 'c') 
+            ->addSelect('c')
+            ->leftJoin('i.client', 'c')
             ->where('i.user = :user')
             ->setParameter('user', $user)
             ->orderBy('i.createdAt', 'DESC')
@@ -223,15 +223,17 @@ class InvoiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    public function searchInvoices(User $user, string $query): array
+    public function searchInvoices(User $user, string $query, string $status = ''): array
     {
         $qb = $this->createQueryBuilder('i')
-            ->addSelect('c', 'it')             
+            ->addSelect('c', 'it')
             ->leftJoin('i.client', 'c')
             ->leftJoin('i.invoiceItems', 'it')
             ->where('i.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('i.createdAt', 'DESC') ; 
+            ->orderBy('i.createdAt', 'DESC');
+
+        // query by text inside search field
         if ($query) {
             $qb->andWhere('
                 i.invoiceNumber LIKE :query OR 
@@ -241,6 +243,21 @@ class InvoiceRepository extends ServiceEntityRepository
                 c.lastName LIKE :query
             ')
                 ->setParameter('query', '%' . $query . '%');
+        }
+
+        // Handle status filtering
+        if ($status) {
+            if ($status === 'OVERDUE') {
+
+                $qb->andWhere('i.status = :sentStatus')
+                    ->andWhere('i.dueDate < :today')
+                    ->setParameter('sentStatus', 'SENT')
+                    ->setParameter('today', new \DateTimeImmutable('today'));
+            } else {
+  
+                $qb->andWhere('i.status = :status')
+                    ->setParameter('status', $status);
+            }
         }
         return $qb->getQuery()->getResult();
     }

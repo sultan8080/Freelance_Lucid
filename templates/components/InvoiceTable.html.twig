@@ -5,7 +5,7 @@
 
 	<div class="flex flex-col sm:flex-row items-center gap-4 w-full mb-6 md:mb-10">
         
-        {# --- 1. SEARCH INPUT (Your existing code) --- #}
+        {#  SEARCH INPUT #}
         <div class="relative flex-1 w-full">
             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <i class="fas fa-search text-slate-500"></i>
@@ -18,8 +18,7 @@
             >
         </div>
 
-        {# --- 2. NEW FILTER DROPDOWN (Inserted Here) --- #}
-        {# "w-full sm:w-auto" ensures it is full width on mobile, but auto/fixed width on desktop #}
+        {#  FILTER DROPDOWN #}
         <div class="relative w-full sm:w-56 shrink-0">
              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <i class="fas fa-filter text-slate-500 text-xs"></i>
@@ -34,7 +33,7 @@
                 <option value="PAID" class="bg-slate-800 text-emerald-400">Paid</option>
                 <option value="OVERDUE" class="bg-slate-800 text-red-400 font-bold">Unpaid / Overdue</option>
             </select>
-            {# Arrow Icon #}
+           
             <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                 <i class="fas fa-chevron-down text-slate-500 text-xs"></i>
             </div>
