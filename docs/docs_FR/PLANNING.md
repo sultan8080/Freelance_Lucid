@@ -90,8 +90,8 @@ _Objectif : Une application fonctionnelle pour gérer, calculer et éditer des f
 - [x] **Design UI :** Refonte complète des formulaires de profil utilisateur en style "Glassmorphism".
 - [x] **Vérification Légale :** Mentions Art. 293B (TVA) + logique automatisée SIRET/TVA.
 - [x] **Recherche Live :** Recherche multicritères (N° Facture, Client, Projet) via `LiveProp`.
-- [ ] **Filtrage des Factures :** Filtrage dynamique par statut (Brouillon, Envoyée, Payée, Retard) via Live Components.
-
+- [ ] **Filtrage des Factures :** Filtrage dynamique par statut (Brouillon, Envoyée, Payée, Retard).
+- [ ] **Pagination Asynchrone** pour les listes Clients et Factures via Live Components.
 ---
 
 ## Partie 2 : Version 2 (Évolutions Planifiées)
