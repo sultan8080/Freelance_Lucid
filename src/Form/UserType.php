@@ -10,20 +10,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserType extends AbstractType
 {
+    public function __construct(private TranslatorInterface $translator) {}
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', TextType::class, [
                 'label' => 'Login Email',
-                'disabled' => true, 
+                'disabled' => true,
                 'attr' => ['class' => 'bg-slate-800 text-slate-500 cursor-not-allowed']
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'First Name',
-                'attr' => ['placeholder' => 'John']
+                'attr' => ['placeholder' => 'John'] // Common names usually don't need trans, but good to have the option
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Last Name',
@@ -31,7 +34,7 @@ class UserType extends AbstractType
             ])
             ->add('companyName', TextType::class, [
                 'label' => 'Company Name',
-                'attr' => ['placeholder' => 'My Freelance Studio']
+                'attr' => ['placeholder' => $this->translator->trans('My Freelance Studio')]
             ])
 
             ->add('address', TextType::class, [
@@ -59,10 +62,10 @@ class UserType extends AbstractType
                 'required' => true,
                 'attr' => ['placeholder' => '12345678900012'],
                 'constraints' => [
-                    new NotBlank(message: 'A SIRET number is mandatory for your invoices.'),
+                    new NotBlank(message: $this->translator->trans('A SIRET number is mandatory for your invoices.')),
                     new Regex(
                         pattern: '/^\d{14}$/',
-                        message: 'Your SIRET must be exactly 14 digits.'
+                        message: $this->translator->trans('Your SIRET must be exactly 14 digits.')
                     )
                 ]
             ])
@@ -74,7 +77,7 @@ class UserType extends AbstractType
             ->add('phoneNumber', TelType::class, [
                 'label' => 'Phone Number',
                 'required' => false,
-                'attr' => ['placeholder' => '  +33 6 00 00 00 00']
+                'attr' => ['placeholder' => ' +33 6 00 00 00 00']
             ])
         ;
     }
