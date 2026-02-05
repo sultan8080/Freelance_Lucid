@@ -81,7 +81,6 @@ _Objectif : Une application fonctionnelle pour gérer, calculer et éditer des f
 - [x] **Navigation Affinée :** Ajout d'états "actifs" sur la sidebar pour indiquer la page courante.
 - [x] **Validation des Formulaires :** Amélioration des messages d'erreur côté client et serveur.
 
-
 ### Phase 10 : Performance, Authentification & Préparation au Déploiement
 
 - [x] **Optimisation SQL :** Mise en place de l'Eager Loading (JOIN) pour éliminer les requêtes N+1.
@@ -92,39 +91,72 @@ _Objectif : Une application fonctionnelle pour gérer, calculer et éditer des f
 - [x] **Recherche Live :** Recherche multicritères (N° Facture, Client, Projet) via `LiveProp`.
 - [x] **Filtrage des Factures :** Filtrage dynamique par statut (Brouillon, Envoyée, Payée, Retard).
 - [x] **Pagination Asynchrone** pour les listes Clients et Factures via Live Components.
+- [x] **Internationalisation (i18n) :** Mise en place du support EN/FR (Traductions, Routage localisé et sélecteur de langue).
+
 ---
 
-## Partie 2 : Version 2 (Évolutions Planifiées)
+## Phase 11 : Le Lancement (Priorité Immédiate)
 
-### Phase 11 : UX Avancée & Préparation au Déploiement
+**Objectif :** Déployer un portfolio entièrement fonctionnel sur un serveur en ligne avec un accès “One‑Click Demo” pour les recruteurs.
 
-#### Partie A : Communication & Sécurité (Fonctionnalités)
+### A. Mode Invité (Accès Recruteur)
 
-- [x] **Internationalisation (i18n) :** Mise en place du support EN/FR (Traductions, Routage localisé et sélecteur de langue).
-- [ ] **Vérification d'Email :** Mise en œuvre de la vérification post-inscription via `VerifyEmailBundle` (Config Mailtrap pour les tests).
-- [ ] **Réinitialisation de Mot de Passe :** Flux sécurisé avec jetons expirables et templates d'emails stylisés.
-- [ ] **"Se souvenir de moi" :** Activation du "Remember Me" sécurisé avec rotation des jetons.
-- [ ] **Envoi Direct de PDF :** Envoi automatisé des factures aux clients par email.
-- [ ] **Templates d'Email Personnalisés :** Création d'emails HTML en style Glassmorphism cohérents avec l'interface.
+- [ ] **Générateur de Données Démo :** Créer un service générant un utilisateur temporaire avec des données factices réalistes.
+- [ ] **Contrôleur de Connexion Invité :** Création automatique de l’utilisateur → génération des données démo → connexion programmée
+- [ ] **Bouton Frontend :** Ajouter un bouton “Accès Recruteur” sur la page de connexion.
 
-#### Partie B : Finitions Professionnelles
+### B. Déploiement en Production (AlwaysData)
 
-- [ ] **Suppression de Données :** Permettre aux utilisateurs de supprimer leur compte et leurs données en toute sécurité (conformité RGPD).
-- [ ] **Configuration de Production :** Paramétrage des secrets `.env.local`, mise en place du CSP/HSTS et des headers de sécurité.
-- [ ] **Optimisation des Assets :** Finalisation de la minification et compression via AssetMapper (`asset-map:compile`).
-- [ ] **Documentation du Projet :** Rédaction d'un `README.md` complet avec lien de démo live, architecture technique et guide d'installation.
+- [ ] **Configuration de l’Hébergement :** Créer un compte sur une plateforme d’hébergement et configurer le projet.
+- [ ] **Secrets Serveur :** Ajouter un `.env.local` avec `APP_ENV=prod` et les identifiants MariaDB.
+- [ ] **Initialisation de la Base :** Lancer les migrations ou la mise à jour du schéma.
+- [ ] **Compilation des Assets :** Compiler les assets (`asset-map:compile`) pour Tailwind v4.
+- [ ] **Vérification en Ligne :** Tester l’URL de production sur desktop et mobile.
 
-### Phase 12 : Cycle de Vente (Devis)
+### C. Documentation
 
-- [ ] **Gestion des Devis :** Création et suivi des estimations/devis.
-- [ ] **Logique de Conversion :** Conversion d'un devis en facture en un seul clic.
+- [ ] **Mise à jour du README :**
+- Ajouter le lien **LIVE DEMO** en haut du fichier.
+- Inclure 1–2 captures d’écran du tableau de bord.
+- Ajouter une liste claire des fonctionnalités réalisées (Phases 1–10).
 
-### Phase 13 : Paiements en Ligne
+---
 
-- [ ] **Intégration Stripe :** Mise en place de la passerelle pour les paiements par carte bancaire.
-- [ ] **Webhooks :** Mise à jour automatique du statut "Payée" lors d'une transaction réussie.
+---
 
-### Phase 14 : API & DevOps
+## PARTIE 2 : VERSION 2 (Post‑Lancement — Évolutions Prévue)
 
-- [ ] **Exposition API :** Accès aux données via une API REST (Authentification JWT).
-- [ ] **Conteneurisation :** Configuration Docker pour des environnements de production identiques.
+Focus : Finition professionnelle, sécurité avancée et nouvelles fonctionnalités.  
+Ces tâches seront réalisées après le lancement public, pendant ta recherche d’emploi ou de missions freelance.
+
+## Phase 12 : Sécurité & Conformité
+
+- [ ] **Vérification d’e‑mail :** Implémenter la vérification post‑inscription via `VerifyEmailBundle` (Mailtrap pour les tests).
+- [ ] **Réinitialisation du mot de passe :** Flux sécurisé avec jetons expirables et e‑mails stylés.
+- [ ] **Remember Me :** Connexion persistante sécurisée avec rotation des jetons.
+- [ ] **Suppression GDPR :** Permettre aux utilisateurs de supprimer leur compte et toutes leurs données associées.
+- [ ] **Durcissement Production :** Ajouter les en‑têtes CSP/HSTS et renforcer les règles de sécurité serveur.
+
+## Phase 13 : Fonctionnalités Avancées
+
+- [ ] **Templates d’e‑mails personnalisés :** E‑mails HTML en glassmorphism cohérents avec l’UI du tableau de bord.
+- [ ] **Envoi direct de PDF :** Envoi automatique des factures par e‑mail.
+- [ ] **Cycle de Vente :** Gestion des devis + workflow “Convertir le devis en facture”.
+- [ ] **Paiements en ligne :** Intégration Stripe avec Webhooks pour mise à jour automatique du statut “PAYÉ”.
+
+## Phase 14 : Finition Professionnelle
+
+- [ ] **Suppression de données :** Suppression complète du compte (conformité RGPD).
+- [ ] **Configuration Production :** Finaliser les secrets `.env.local`, CSP/HSTS et en‑têtes sécurisés.
+- [ ] **Pipeline d’assets :** Minification et compression via AssetMapper (`asset-map:compile`).
+- [ ] **Documentation Projet :** Mettre à jour le README avec lien démo, architecture technique et guide d’installation.
+
+## Phase 15 : Paiements en Ligne
+
+- [ ] **Intégration Stripe :** Support des paiements par carte bancaire.
+- [ ] **Webhooks :** Mise à jour automatique du statut “PAYÉ” après transaction réussie.
+
+## Phase 16 : API & DevOps
+
+- [ ] **Exposition API :** API REST sécurisée avec authentification JWT.
+- [ ] **Containerisation :** Mise en place d’un `docker-compose.yaml` pour un environnement de production cohérent.

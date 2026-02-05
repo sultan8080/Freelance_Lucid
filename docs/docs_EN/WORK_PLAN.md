@@ -1,6 +1,6 @@
 # Project Roadmap — Freelance Flow
 
-## Part 1: The MVP (Minimum Viable Product)
+## PARTT 1 : VERSION 1 - The MVP (Minimum Viable Product)
 
 _Goal: A functional app to manage, calculate, and export invoices._
 
@@ -88,42 +88,74 @@ _Goal: A functional app to manage, calculate, and export invoices._
 - [x] **UI Styling:** Full "Glassmorphism" restyling of the user profile forms.
 - [x] **Legal Verification:** Art. 293B (VAT) mentions + automated SIRET/VAT logic.
 - [x] **Live Search:** Multi-criteria search (Invoice #, Client, Project) using `LiveProp`.
-- [x] **Invoice Filtering:** Dynamic filtering by status (Draft, Sent, Paid, Overdue) 
+- [x] **Invoice Filtering:** Dynamic filtering by status (Draft, Sent, Paid, Overdue)
 - [x] **Asynchronous Pagination** for both Client and Invoice lists using Live Components.
+- [x] **Internationalization (i18n):** Implement EN/FR support across the UI (Translations, Localized Routing, and Locale Switcher).
 
 ---
 
-## Part 2: Version 2 (Planned Evolutions)
+## Phase 11: The Launch (Immediate Priority)
 
-### Phase 11: Advanced UX & Deployment Readiness
+**Goal:** Deploy a fully functional portfolio to an online server with a “One‑Click Demo” for recruiters.
 
-#### Part A: Communication & Security (The "Features")
+### A. Guest Mode (Recruiter Demo Access)
 
-- [x] **Internationalization (i18n):** Implement EN/FR support across the UI (Translations, Localized Routing, and Locale Switcher).
-- [ ] **Email Verification:** Implement post-registration verification via `VerifyEmailBundle` (Mailtrap config for testing).
+- [ ] **Demo Data Generator:** Create a service that generates a temporary user with realistic fake data.
+- [ ] **Guest Login Controller:** Auto‑create user → generate demo data → programmatic login → redirect to dashboard.
+- [ ] **Frontend Button:** Add a “Recruiter Access” button on the login page.
+
+### B. Production Deployment (AlwaysData)
+
+- [ ] **Hosting Setup:** Create an account on a hosting platform and configure the project.
+- [ ] **Server Secrets:** Add `.env.local` with `APP_ENV=prod` and MariaDB credentials.
+- [ ] **Database Init:** Run migrations or schema updates.
+- [ ] **Assets Build:** Compile assets (`asset-map:compile`) for Tailwind v4.
+- [ ] **Live Check:** Test the production URL on desktop and mobile.
+
+### C. Documentation
+
+- [ ] **README Update:**
+- Add the **LIVE DEMO** link at the top.
+- Include 1–2 dashboard screenshots.
+- Add a clean feature list summarizing Phases 1–10.
+
+---
+
+---
+
+## PARTT 2: VERSION 2 (Post-Launch - Planned Evolutions)
+
+Focus: Professional polish, security, and advanced features.  
+These tasks will be completed after the public launch and while applying for jobs/freelance missions.
+
+## Phase - 12: Security & Compliance
+
+- [ ] **Email Verification:** Implement post‑registration verification via `VerifyEmailBundle` (Mailtrap for testing).
 - [ ] **Password Reset:** Secure reset flows with expiring tokens and styled email templates.
-- [ ] **Remember Me:** Secure "Remember Me" activation with token rotation.
-- [ ] **Direct PDF Delivery:** Automated email delivery of invoices to clients.
-- [ ] **Customizable Email Templates:** Create Glassmorphism-styled HTML emails consistent with the dashboard UI.
+- [ ] **Remember Me:** Secure persistent login with token rotation.
+- [ ] **GDPR Deletion:** Allow users to delete their account and all associated data.
+- [ ] **Production Hardening:** Add CSP/HSTS headers and secure production firewall rules.
 
-#### Part B: The Professional Polish
+## Phase -13: Advanced Features
 
-- [ ] **Data Deletion Logic:** Enable users to delete their account and associated data safely (GDPR compliance).
-- [ ] **Production Config:** Setup `.env.local` secrets, CSP/HSTS, and secure production headers.
-- [ ] **Asset Pipeline:** Finalize minification and compression via AssetMapper (`asset-map:compile`).
-- [ ] **Project Documentation:** Complete the `README.md` with live demo link, technical architecture, and installation guide.
+- [ ] **Customizable Email Templates:** Glassmorphism‑styled HTML emails consistent with the dashboard UI.
+- [ ] **Direct PDF Delivery:** Automated emailing of invoices to clients.
+- [ ] **Sales Cycle:** Quote/estimate management + “Convert Quote to Invoice” workflow.
+- [ ] **Online Payments:** Stripe integration with Webhooks for automatic “PAID” updates.
 
-### Phase 12: Sales Cycle (Quotes)
+## Phase 14: The Professional Polish
 
-- [ ] **Quote/Estimate Management:** Create and track quotes.
-- [ ] **Conversion Logic:** One-click "Convert Quote to Invoice" feature.
+- [ ] **Data Deletion Logic:** Full GDPR‑compliant account deletion.
+- [ ] **Production Config:** Finalize `.env.local` secrets, CSP/HSTS, and secure headers.
+- [ ] **Asset Pipeline:** Minification and compression via AssetMapper (`asset-map:compile`).
+- [ ] **Project Documentation:** Update README with live demo link, architecture overview, and installation guide.
 
-### Phase 13: Online Payments
+## Phase 15: Online Payments
 
-- [ ] **Stripe Integration:** Payment gateway integration for credit card payments.
-- [ ] **Webhooks:** Automated "Paid" status updates upon successful transaction.
+- [ ] **Stripe Integration:** Credit card payment support.
+- [ ] **Webhooks:** Auto‑update invoice status to “PAID” after successful Stripe events.
 
-### Phase 14: API & DevOps
+## Phase 16: API & DevOps
 
-- [ ] **API Exposure:** Data access via REST API (JWT Authentication).
-- [ ] **Containerization:** Docker setup for consistent production environments.
+- [ ] **API Exposure:** REST API with JWT Authentication.
+- [ ] **Containerization:** Add `docker-compose.yaml` for consistent production environments.
