@@ -78,3 +78,41 @@ home:
 "DRAFT": "BROUILLON"
 "SENT": "ENVOYÉE"
 "PAID": "PAYÉE"
+
+
+# --- Invoice Management ---
+"Invoice Management": "Gestion des Factures"
+"Manage your Invoices Information": "Gérez vos informations de facturation"
+"Search by invoices / company name / project title...": "Rechercher facture / entreprise / projet..."
+"All Invoices": "Toutes les factures"
+"Unpaid / Overdue": "Impayées / En retard"
+"Paid": "Payées"
+"Sent": "Envoyées"
+"Draft": "Brouillon"
+"Add Invoice": "Ajouter une facture"
+
+# --- Table Content ---
+"Project Title": "Titre du projet"
+"Total": "Total"
+"/ net": "/ net"
+"Actions": "Actions"
+"Locked Data": "Données verrouillées"
+"No Client": "Aucun client"
+"UNPAID / OVERDUE": "IMPAYÉE / RETARD"
+"Overdue": "Retard"
+"Due": "Échéance"
+"No Project Title": "Sans titre"
+"Net:": "Net :"
+"View Details": "Voir détails"
+"Edit Draft": "Modifier brouillon"
+"Update Status / Revert": "Changer statut / Annuler"
+"Delete this draft?": "Supprimer ce brouillon ?"
+"No invoices found.": "Aucune facture trouvée."
+"Create your first invoice": "Créez votre première facture"
+
+# --- Pagination ---
+"Page": "Page"
+"of": "sur"
+"total invoices": "factures au total"
+"Previous": "Précédent"
+"Next": "Suivant"

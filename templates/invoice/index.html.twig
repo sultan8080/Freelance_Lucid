@@ -1,11 +1,10 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Invoice Management
+{% block title %}{{ 'Invoice Management'|trans }}
 {% endblock %}
 
 {% block dashboard_content %}
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p2-10">
-		<twig:InvoiceTable/>
-	</div>
-
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p2-10">
+        <twig:InvoiceTable/>
+    </div>
 {% endblock %}
