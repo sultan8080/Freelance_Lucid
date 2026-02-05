@@ -1,6 +1,8 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Edit Client -
+{% block title %}
+	{{ 'Edit Client'|trans }}
+	-
 	{{ client.fullName }}
 {% endblock %}
 
@@ -9,7 +11,7 @@
 
 		<a href="{{ path('app_client_index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors mb-6 group">
 			<i class="fas fa-arrow-left text-xs group-hover:-translate-x-1 transition-transform"></i>
-			Back to list
+			{{ 'Back to list'|trans }}
 		</a>
 
 		<div class="glass-card rounded-2xl p-6 sm:p-10 border border-white/10 relative overflow-hidden">
@@ -21,10 +23,10 @@
 					<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center text-white font-bold border border-white/10">
 						{{ client.fullName|slice(0,2)|upper }}
 					</div>
-					<h1 class="text-2xl font-bold text-white tracking-tight">Edit Client</h1>
+					<h1 class="text-2xl font-bold text-white tracking-tight">{{ 'Edit Client'|trans }}</h1>
 				</div>
 				<p class="text-slate-400 text-sm">
-					Update details for
+					{{ 'Update details for'|trans }}
 					<span class="text-white font-medium">{{ client.companyName ?: client.fullName }}</span>
 				</p>
 			</div>
@@ -32,19 +34,19 @@
 			{% block client_form %}
 				{{ include('client/_form.html.twig', { 
                     form: form, 
-                    button_label: 'Update Client' 
+                    button_label: 'Update Client'|trans 
                 }) }}
 			{% endblock %}
 
 			<div class="mt-12 pt-8 border-t border-red-500/10">
 				<h3 class="text-xs font-bold text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
 					<i class="fas fa-exclamation-triangle"></i>
-					Danger Zone
+					{{ 'Danger Zone'|trans }}
 				</h3>
 				<div class="flex items-center justify-between bg-red-500/5 rounded-xl p-4 border border-red-500/10">
 					<div>
-						<p class="text-sm text-slate-300 font-medium">Delete this client</p>
-						<p class="text-xs text-slate-500">Once deleted, this action cannot be undone.</p>
+						<p class="text-sm text-slate-300 font-medium">{{ 'Delete this client'|trans }}</p>
+						<p class="text-xs text-slate-500">{{ 'Once deleted, this action cannot be undone.'|trans }}</p>
 					</div>
 					{{ include('client/_delete_form.html.twig') }}
 				</div>
