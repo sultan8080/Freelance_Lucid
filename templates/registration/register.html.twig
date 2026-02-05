@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Sign up
+{% block title %}
+	Sign up
 {% endblock %}
 
 {% block body %}
 
 	<div class="absolute top-0 left-0 w-full z-50">
 		<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-end">
-
-			<div class="relative group">
-				<button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors bg-slate-900/50 border border-white/10 px-3 py-1.5 rounded-full backdrop-blur-md hover:bg-white/10">
+			<div class="relative group border border-slate-700 rounded-md px-4 py-2">
+				<button class="flex items-center gap-1.5 text-sm font-medium text-slate-200 hover:text-white transition-colors uppercase">
 					<i class="fa-solid fa-earth-europe opacity-50 group-hover:opacity-100"></i>
-					<span class="opacity-65 group-hover:opacity-100">EN</span>
+					<span class="opacity-65 group-hover:opacity-100">{{ app.request.locale }}</span>
 					<i class="fa-solid fa-chevron-down opacity-50 group-hover:opacity-100 text-xs"></i>
 				</button>
-
-				<div class="absolute right-0 top-full mt-2 w-24 py-1 rounded-lg bg-slate-900 border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
-					<a href="#" class="block px-3 py-2 text-xs font-medium text-white bg-white/5 text-center">EN</a>
-					<a href="#" class="block px-3 py-2 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 text-center">FR</a>
+				<div class="absolute right-0 top-full hidden group-hover:block pt-2 z-50">
+					<div class="w-24 bg-slate-800 border border-slate-700 rounded-md shadow-lg py-1">
+						{% for locale in ['en', 'fr'] %}
+							{% if locale != app.request.locale %}
+								<a href="{{ path(app.request.attributes.get('_route')|default('app_home'), app.request.attributes.get('_route_params', {})|merge({'_locale': locale})) }}" data-turbo="false" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors uppercase">
+									{{ locale }}
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -34,18 +39,15 @@
 					<i class="fa-brands fa-slack text-white font-bold relative z-10 text-xl"></i>
 				</div>
 
-				<h2 class="text-3xl  mt-2 font-bold text-white mb-2 tracking-tight">Create Account</h2>
+				<h2 class="text-3xl mt-2 font-bold text-white mb-2 tracking-tight">Create Account</h2>
 				<p class="text-slate-400 text-sm">Join Freelance Flow today</p>
 			</div>
 
 			{{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
 
-			{% if form_errors(registrationForm) %}
-				<div class="bg-red-500/10 border border-red-500/20 rounded-lg p-4 mb-6 text-sm text-red-300 flex items-start gap-3">
-					<i class="fa-solid fa-circle-exclamation mt-0.5"></i>
-					<div>{{ form_errors(registrationForm) }}</div>
-				</div>
-			{% endif %}
+			<div id="flash-messages" class="mb-6">
+				{% include '_partials/_flash_messages.html.twig' %}
+			</div>
 
 			<div>
 				{{ form_label(registrationForm.email, 'Email Address', {'label_attr': {'class': 'block text-sm font-medium text-slate-300 mb-1.5'}}) }}
@@ -55,9 +57,13 @@
                         'placeholder': 'you@example.com'
                     }
                 }) }}
-				<div class="text-red-400 text-xs mt-1">
-					{{ form_errors(registrationForm.email) }}
-				</div>
+
+				{% if registrationForm.email.vars.errors|length > 0 %}
+					<div class="text-red-400 text-xs mt-1 flex items-center gap-1">
+						<i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+						<span>{{ form_errors(registrationForm.email)|striptags }}</span>
+					</div>
+				{% endif %}
 			</div>
 
 			<div>
@@ -68,9 +74,14 @@
                         'placeholder': '••••••••'
                     }
                 }) }}
-				<div class="text-red-400 text-xs mt-1">
-					{{ form_errors(registrationForm.plainPassword) }}
-				</div>
+
+				{#  Error Logic #}
+				{% if registrationForm.plainPassword.vars.errors|length > 0 %}
+					<div class="text-red-400 text-xs mt-1 flex items-center gap-1">
+						<i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+						<span>{{ form_errors(registrationForm.plainPassword)|striptags }}</span>
+					</div>
+				{% endif %}
 			</div>
 
 			<div class="flex items-start mt-4 mb-2">
@@ -83,9 +94,14 @@
 					{{ form_label(registrationForm.agreeTerms, 'I agree to the terms and conditions', {'label_attr': {'class': 'text-slate-400 select-none cursor-pointer hover:text-slate-300 transition-colors'}}) }}
 				</div>
 			</div>
-			<div class="text-red-400 text-xs mb-4">
-				{{ form_errors(registrationForm.agreeTerms) }}
-			</div>
+
+			{# Error Logic for Checkbox #}
+			{% if registrationForm.agreeTerms.vars.errors|length > 0 %}
+				<div class="text-red-400 text-xs mb-4 flex items-center gap-1">
+					<i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+					<span>{{ form_errors(registrationForm.agreeTerms)|striptags }}</span>
+				</div>
+			{% endif %}
 
 			<button type="submit" class="group relative w-full flex justify-center py-3 px-4 rounded-lg overflow-hidden transition-all duration-300 shadow-lg shadow-blue-600/20 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-slate-900">
 				<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>

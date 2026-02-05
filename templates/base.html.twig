@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Freelance Flow{% endblock %}</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}Freelance Flow
+			{% endblock %}
+		</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer"/>
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-        {% endblock %}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ importmap('app') }}
-        {% endblock %}
-    </head>
-    
-    <body class="antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden relative">
-        
-        <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-            <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen opacity-50"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen opacity-50"></div>
-            <div class="absolute inset-0 bg-grid pointer-events-none"></div>
-        </div>
+		{% block javascripts %}
+			{{ importmap('app') }}
+		{% endblock %}
+	</head>
 
-        <div class="relative z-10">
-            {% block body %}{% endblock %}
-        </div>
+	<body class="antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden relative">
 
-    </body>
-</html>
+		<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+			<div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen opacity-50"></div>
+			<div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen opacity-50"></div>
+			<div class="absolute inset-0 bg-grid pointer-events-none"></div>
+		</div>
+		
+		<div class="relative z-10"> {% block body %}{% endblock %}
+			</div>
+
+		</body>
+	</html>

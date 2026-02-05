@@ -18,8 +18,8 @@ class ClientType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'label' => 'First Name', // Symfony translates labels automatically if they match keys
-                'attr' => ['placeholder' => $this->translator->trans('John')], // Attributes need manual translation
+                'label' => 'First Name', 
+                'attr' => ['placeholder' => $this->translator->trans('John')], 
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Last Name',
