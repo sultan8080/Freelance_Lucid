@@ -195,3 +195,17 @@ home:
 "Select a client": "Sélectionner un client"
 "Mark as Paid": "Marquer comme Payée"
 "Revert to Sent (Unpaid)": "Revenir à Envoyée (Impayée)"
+
+# --- PDF Invoice ---
+"Invoice Reference": "Référence Facture"
+"Issue Date:": "Date d'émission :"
+"Paid Date:": "Date de paiement :"
+"Due Date:": "Date d'échéance :"
+"Client Name": "Nom du Client"
+"VAT:": "TVA :"
+"No items.": "Aucun article."
+"Thank you for your business.": "Merci de votre confiance."
+"Please use reference": "Veuillez utiliser la référence"
+"for payment.": "pour le paiement."
+"Late payment penalties: 10% interest plus a fixed recovery fee of €40 (B2B).": "Pénalités de retard : 10% d'intérêts plus indemnité forfaitaire de 40€ (B2B)."
+"Invoice Paid, Thank you!": "Facture acquittée, Merci !"

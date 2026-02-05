@@ -194,3 +194,19 @@ home:
 "Select a client": "Select a client"
 "Mark as Paid": "Mark as Paid"
 "Revert to Sent (Unpaid)": "Revert to Sent (Unpaid)"
+
+# --- PDF Invoice ---
+"Invoice Reference": "Invoice Reference"
+"Issue Date:": "Issue Date:"
+"Paid Date:": "Paid Date:"
+"Due Date:": "Due Date:"
+"Client Name": "Client Name"
+"VAT:": "VAT:"
+"No items.": "No items."
+"Thank you for your business.": "Thank you for your business."
+"Please use reference": "Please use reference"
+"for payment.": "for payment."
+"Late payment penalties: 10% interest plus a fixed recovery fee of €40 (B2B).": "Late payment penalties: 10% interest plus a fixed recovery fee of €40 (B2B)."
+"Invoice Paid, Thank you!": "Invoice Paid, Thank you!"
+
+
