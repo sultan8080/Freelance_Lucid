@@ -1,5 +1,18 @@
 # 📔 Journal de Bord / Development Log — Freelance Flow [Version Français]
 
+## 📅 Jour 12–13 [3–4 février 2026] — Performance, Auth & Préparation au Déploiement
+
+### Réalisations :
+
+- [x] **Optimisation SQL :** Suppression des problèmes N+1 grâce au eager loading (JOIN).
+- [x] **Intégrité des Fixtures :** `persist` différé + `ReflectionProperty` pour une histoire de données réaliste.
+- [x] **Workflow Profil :** Séparation `/profile` (lecture seule) et `/profile/edit` avec validation Turbo.
+- [x] **UI Styling :** Refonte complète en glassmorphism des formulaires de profil.
+- [x] **Vérifications Légales :** Mentions Art. 293B + logique automatisée SIRET/TVA.
+- [x] **Recherche Instantanée :** Recherche multi‑critères (N° facture, client, projet) via `LiveProp`.
+- [x] **Filtrage des Factures :** Filtrage dynamique par statut (Brouillon, Envoyée, Payée, En retard).
+- [x] **Pagination Asynchrone :** Pagination Live Components pour Clients et Factures.
+
 ## 📅 Jour 11 [2 février 2026] — Optimisation UX & Finitions (Phase 9)
 
 ### Réalisations :

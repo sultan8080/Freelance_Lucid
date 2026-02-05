@@ -1,5 +1,19 @@
 # Development Log — Freelance Flow [English version]
 
+## 📅 Day 12–13 [February 3–4, 2026] — Performance, Auth Enhancements & Deployment Readiness (Phase 10)
+
+### Accomplishments:
+
+- [x] **SQL Query Tuning:** Eliminated N+1 issues via eager loading (JOIN).
+- [x] **Fixture Integrity:** Deferred persist + `ReflectionProperty` for realistic historical data.
+- [x] **Profile Workflow:** Split `/profile` (read-only) and `/profile/edit` with Turbo validation.
+- [x] **UI Styling:** Applied full glassmorphism restyling to profile forms.
+- [x] **Legal Verification:** Added Art. 293B mentions + automated SIRET/VAT validation logic.
+- [x] **Live Search:** Multi-criteria search (Invoice #, Client, Project) using `LiveProp`.
+- [x] **Invoice Filtering:** Dynamic filtering by status (Draft, Sent, Paid, Overdue).
+- [x] **Asynchronous Pagination:** Live Component–based async pagination for Clients and Invoices.
+
+
 ## 📅 Day 11 [February 2, 2026] — UX Optimization & Polish (Phase 9)
 
 ### Accomplishments:
