@@ -301,3 +301,33 @@ home:
 "Please correct the errors below:": "Veuillez corriger les erreurs ci-dessous :"
 "Save Profile": "Enregistrer le Profil"
 "VAT Number (Optional)": "Numéro de TVA (Optionnel)"
+
+# --- Analytics ---
+
+"Financial Insights": "Aperçu Financier"
+"Performance overview for Fiscal Year": "Performance pour l'année fiscale"
+"Total Revenue": "Chiffre d'Affaires"
+"Avg. Invoice": "Panier Moyen"
+"Paid Ratio": "Taux de Paiement"
+"inv.": "fact."
+"Ceiling": "Plafond"
+"Revenue Trend": "Évolution du Revenu"
+"Top Clients": "Meilleurs Clients"
+"No paid data for": "Aucune donnée payée pour"
+"Pending Payments": "Paiements en Attente"
+"All caught up!": "Tout est à jour !"
+"No pending invoices found for this period.": "Aucune facture en attente pour cette période."
+
+# --- Months ---
+"Jan": "Jan"
+"Feb": "Fév"
+"Mar": "Mar"
+"Apr": "Avr"
+"May": "Mai"
+"Jun": "Juin"
+"Jul": "Juil"
+"Aug": "Août"
+"Sep": "Sep"
+"Oct": "Oct"
+"Nov": "Nov"
+"Dec": "Déc"

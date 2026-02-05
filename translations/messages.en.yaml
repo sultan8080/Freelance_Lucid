@@ -302,3 +302,34 @@ home:
 "Please correct the errors below:": "Please correct the errors below:"
 "Save Profile": "Save Profile"
 "VAT Number (Optional)": "VAT Number (Optional)"
+
+# --- Analytics ---
+
+"Financial Insights": "Financial Insights"
+"Performance overview for Fiscal Year": "Performance overview for Fiscal Year"
+"Total Revenue": "Total Revenue"
+"Avg. Invoice": "Avg. Invoice"
+"Paid Ratio": "Paid Ratio"
+"inv.": "inv."
+"Ceiling": "Ceiling"
+"Revenue Trend": "Revenue Trend"
+"Top Clients": "Top Clients"
+"No paid data for": "No paid data for"
+"Pending Payments": "Pending Payments"
+"All caught up!": "All caught up!"
+"No pending invoices found for this period.": "No pending invoices found for this period."
+
+# --- Months ---
+
+"Jan": "Jan"
+"Feb": "Feb"
+"Mar": "Mar"
+"Apr": "Apr"
+"May": "May"
+"Jun": "Jun"
+"Jul": "Jul"
+"Aug": "Aug"
+"Sep": "Sep"
+"Oct": "Oct"
+"Nov": "Nov"
+"Dec": "Dec"

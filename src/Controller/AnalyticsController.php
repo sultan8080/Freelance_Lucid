@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
@@ -16,7 +17,8 @@ class AnalyticsController extends AbstractController
     public function index(
         Request $request,
         AnalyticsService $analyticsService,
-        ChartBuilderInterface $chartBuilder
+        ChartBuilderInterface $chartBuilder,
+        TranslatorInterface $translator
     ): Response {
 
         // 1.  Determine Selected Year
@@ -30,20 +32,35 @@ class AnalyticsController extends AbstractController
         // 3. Configure the Revenue Chart
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
         $chart->setData([
-            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            // Keep months keys as standard or translate them if needed. 
+            // For ChartJS labels, it's often better to translate them in the controller.
+            'labels' => [
+                $translator->trans('Jan'),
+                $translator->trans('Feb'),
+                $translator->trans('Mar'),
+                $translator->trans('Apr'),
+                $translator->trans('May'),
+                $translator->trans('Jun'),
+                $translator->trans('Jul'),
+                $translator->trans('Aug'),
+                $translator->trans('Sep'),
+                $translator->trans('Oct'),
+                $translator->trans('Nov'),
+                $translator->trans('Dec')
+            ],
             'datasets' => [[
-                'label' => 'Revenue ' . $selectedYear,
-                'backgroundColor' => 'rgba(99, 102, 241, 0.2)', // Indigo 500 (Transparent)
-                'borderColor' => 'rgb(99, 102, 241)',           // Indigo 500 (Solid)
-                'data' => $data['chart']['data'],               // Data from Service
-                'tension' => 0.4,                               // Smooth curve
+                'label' => $translator->trans('Revenue') . ' ' . $selectedYear,
+                'backgroundColor' => 'rgba(99, 102, 241, 0.2)', 
+                'borderColor' => 'rgb(99, 102, 241)',           
+                'data' => $data['chart']['data'],               
+                'tension' => 0.4,                               
                 'fill' => true,
             ]],
         ]);
 
         $chart->setOptions([
             'plugins' => [
-                'legend' => ['display' => false], // Hide default legend for a cleaner UI
+                'legend' => ['display' => false], 
                 'tooltip' => [
                     'backgroundColor' => 'rgba(0, 0, 0, 0.8)',
                     'padding' => 10,
@@ -54,12 +71,12 @@ class AnalyticsController extends AbstractController
                 'y' => [
                     'beginAtZero' => true,
                     'grid' => [
-                        'color' => 'rgba(255, 255, 255, 0.05)' // Subtle grid lines for dark mode
+                        'color' => 'rgba(255, 255, 255, 0.05)'
                     ],
-                    'ticks' => ['color' => '#9ca3af'] // Gray-400 text
+                    'ticks' => ['color' => '#9ca3af'] 
                 ],
                 'x' => [
-                    'grid' => ['display' => false], // Hide X-axis grid
+                    'grid' => ['display' => false], 
                     'ticks' => ['color' => '#9ca3af']
                 ]
             ],

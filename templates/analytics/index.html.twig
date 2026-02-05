@@ -1,6 +1,8 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Analytics -
+{% block title %}
+	{{ 'Analytics'|trans }}
+	-
 	{{ selected_year }}
 {% endblock %}
 
@@ -12,9 +14,9 @@
 		{# --- 1. Header & Year Filter --- #}
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
 			<div>
-				<h1 class="text-3xl font-extrabold text-white tracking-tight">Financial Insights</h1>
+				<h1 class="text-3xl font-extrabold text-white tracking-tight">{{ 'Financial Insights'|trans }}</h1>
 				<p class="text-slate-400 mt-1">
-					Performance overview for Fiscal Year
+					{{ 'Performance overview for Fiscal Year'|trans }}
 					<span class="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
 						{{ selected_year }}
 					</span>
@@ -48,7 +50,7 @@
 						<i class="fa-solid fa-euro-sign text-lg"></i>
 					</div>
 					<div>
-						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total Revenue</p>
+						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{{ 'Total Revenue'|trans }}</p>
 						<h3 class="text-2xl font-bold text-white tracking-tight">{{ kpi.total_revenue|number_format(0, '.', ' ') }}
 							€</h3>
 					</div>
@@ -62,7 +64,7 @@
 						<i class="fa-solid fa-chart-line text-lg"></i>
 					</div>
 					<div>
-						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Avg. Invoice</p>
+						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{{ 'Avg. Invoice'|trans }}</p>
 						<h3 class="text-2xl font-bold text-white tracking-tight">{{ kpi.avg_invoice|number_format(0, '.', ' ') }}
 							€</h3>
 					</div>
@@ -76,11 +78,11 @@
 						<i class="fa-solid fa-check-double text-lg"></i>
 					</div>
 					<div>
-						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Paid Ratio</p>
+						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{{ 'Paid Ratio'|trans }}</p>
 						<div class="flex items-baseline gap-2">
 							<h3 class="text-2xl font-bold text-white tracking-tight">{{ kpi.paid_ratio|round }}%</h3>
 							<span class="text-xs text-slate-500 font-medium">{{ kpi.total_count }}
-								inv.</span>
+								{{ 'inv.'|trans }}</span>
 						</div>
 					</div>
 				</div>
@@ -90,10 +92,10 @@
 			<div class="glass-card p-6 hover:border-cyan-500/30 transition-all group">
 				<div class="flex items-center justify-between mb-2">
 					<div class="flex items-center gap-3">
-						<div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+						<div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-blue-400 group-hover:bg-purple-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(6,182,212,0.15)]">
 							<i class="fa-solid fa-layer-group text-sm"></i>
 						</div>
-						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Ceiling</p>
+						<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{{ 'Ceiling'|trans }}</p>
 					</div>
 					<span class="text-[10px] font-semibold text-slate-400 bg-white/5 px-2 py-1 rounded-lg border border-white/10">{{ kpi.ceiling_limit|number_format(0, '.', ' ') }}€</span>
 				</div>
@@ -102,7 +104,7 @@
 					<span class="text-2xl font-bold text-white">{{ kpi.ceiling_percent|round(1) }}%</span>
 				</div>
 				<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-					<div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(6,182,212,0.5)]" style="width: {{ kpi.ceiling_percent }}%"></div>
+					<div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(6,182,212,0.5)]" style="width: {{ kpi.ceiling_percent }}%"></div>
 				</div>
 			</div>
 		</div>
@@ -115,7 +117,7 @@
 			<div class="lg:col-span-2 glass-card rounded-2xl p-6 sm:p-8">
 				<div class="flex items-center gap-4 mb-6">
 					<div class="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-					<h2 class="text-lg font-bold text-white">Revenue Trend</h2>
+					<h2 class="text-lg font-bold text-white">{{ 'Revenue Trend'|trans }}</h2>
 				</div>
 				<div class="relative h-80 w-full">
 					{{ render_chart(chart, {'class': 'absolute inset-0'}) }}
@@ -125,8 +127,8 @@
 			{# Top Clients List #}
 			<div class="glass-card rounded-2xl p-6 sm:p-8">
 				<div class="flex items-center gap-4 mb-6">
-					<div class="w-1.5 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div>
-					<h2 class="text-lg font-bold text-white">Top Clients</h2>
+					<div class="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+					<h2 class="text-lg font-bold text-white">{{ 'Top Clients'|trans }}</h2>
 				</div>
 
 				<ul class="space-y-4">
@@ -147,7 +149,7 @@
 						</li>
 					{% else %}
 						<li class="text-slate-500 text-sm py-4 text-center italic">
-							No paid data for
+							{{ 'No paid data for'|trans }}
 							{{ selected_year }}.
 						</li>
 					{% endfor %}
@@ -159,18 +161,18 @@
 		<div class="glass-card rounded-2xl p-6 sm:p-8">
 			<div class="flex items-center gap-4 mb-6">
 				<div class="w-1.5 h-6 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full"></div>
-				<h2 class="text-lg font-bold text-white">Pending Payments</h2>
+				<h2 class="text-lg font-bold text-white">{{ 'Pending Payments'|trans }}</h2>
 			</div>
 
 			<div class="overflow-x-auto">
 				<table class="w-full text-left text-sm text-slate-400">
 					<thead class="uppercase text-xs text-slate-500 border-b border-white/5">
 						<tr>
-							<th class="py-4 pl-4 font-bold tracking-wider">Client</th>
-							<th class="py-4 font-bold tracking-wider">Invoice #</th>
-							<th class="py-4 font-bold tracking-wider">Due Date</th>
-							<th class="py-4 font-bold tracking-wider">Amount (HT)</th>
-							<th class="py-4 text-right pr-4 font-bold tracking-wider">Status</th>
+							<th class="py-4 pl-4 font-bold tracking-wider">{{ 'Client'|trans }}</th>
+							<th class="py-4 font-bold tracking-wider">{{ 'Invoice #'|trans }}</th>
+							<th class="py-4 font-bold tracking-wider">{{ 'Due Date'|trans }}</th>
+							<th class="py-4 font-bold tracking-wider">{{ 'Amount (HT)'|trans }}</th>
+							<th class="py-4 text-right pr-4 font-bold tracking-wider">{{ 'Status'|trans }}</th>
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-white/5">
@@ -196,7 +198,7 @@
 								</td>
 								<td class="py-4 text-right pr-4">
 									<span class="px-3 py-1 rounded-full text-[10px] font-bold border uppercase tracking-wider shadow-sm bg-amber-500/10 text-amber-400 border-amber-500/20">
-										{{ invoice.status }}
+										{{ invoice.status|trans }}
 									</span>
 								</td>
 							</tr>
@@ -207,8 +209,8 @@
 										<div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
 											<i class="fas fa-check text-xl"></i>
 										</div>
-										<p class="text-white font-medium">All caught up!</p>
-										<p class="text-slate-500 text-sm">No pending invoices found for this period.</p>
+										<p class="text-white font-medium">{{ 'All caught up!'|trans }}</p>
+										<p class="text-slate-500 text-sm">{{ 'No pending invoices found for this period.'|trans }}</p>
 									</div>
 								</td>
 							</tr>
