@@ -210,6 +210,7 @@ home:
 "Invoice Paid, Thank you!": "Invoice Paid, Thank you!"
 
 # --- Client Management ---
+
 "Clients Management": "Clients Management"
 "Manage your clients information": "Manage your clients information"
 "Search clients by name": "Search clients by name"
@@ -220,4 +221,17 @@ home:
 "Individual": "Individual"
 "No clients found.": "No clients found."
 
+# --- Client Creation ---
+"Create New Client": "Create New Client"
+"Add New Client": "Add New Client"
+"Enter the details below to register a new business partner.": "Enter the details below to register a new business partner."
 
+# --- Client Details (Show) ---
+
+"Edit Details": "Edit Details"
+"Individual Client": "Individual Client"
+"Contact Information": "Contact Information"
+"Email": "Email"
+"Phone": "Phone"
+"Billing Address": "Billing Address"
+"VAT Number": "VAT Number"

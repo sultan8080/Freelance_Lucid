@@ -220,3 +220,17 @@ home:
 "Address": "Adresse"
 "Individual": "Particulier"
 "No clients found.": "Aucun client trouvé."
+
+# --- Client Creation ---
+"Create New Client": "Créer un nouveau client"
+"Add New Client": "Ajouter un client"
+"Enter the details below to register a new business partner.": "Saisissez les détails ci-dessous pour enregistrer un nouveau partenaire."
+
+# --- Client Details (Show) ---
+"Edit Details": "Modifier les détails"
+"Individual Client": "Client Particulier"
+"Contact Information": "Informations de Contact"
+"Email": "Email"
+"Phone": "Téléphone"
+"Billing Address": "Adresse de Facturation"
+"VAT Number": "Numéro de TVA"

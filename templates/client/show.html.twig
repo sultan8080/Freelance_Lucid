@@ -1,6 +1,8 @@
 {% extends 'dashboard/base.html.twig' %}
 
-{% block title %}Client Details -
+{% block title %}
+	{{ 'Client Details'|trans }}
+	-
 	{{ client.fullName }}
 {% endblock %}
 
@@ -12,12 +14,12 @@
 		<div class="flex items-center justify-between mb-8">
 			<a href="{{ path('app_client_index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors group">
 				<i class="fas fa-arrow-left text-xs group-hover:-translate-x-1 transition-transform"></i>
-				Back to list
+				{{ 'Back to list'|trans }}
 			</a>
 			<div class="flex items-center gap-3">
 				<a href="{{ path('app_client_edit', {'id': client.id}) }}" class="px-4 py-2 text-sm font-semibold text-slate-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:text-white transition-all shadow-lg backdrop-blur-md">
 					<i class="fas fa-edit mr-2 text-slate-400"></i>
-					Edit Details
+					{{ 'Edit Details'|trans }}
 				</a>
 				{{ include('client/_delete_form.html.twig') }}
 			</div>
@@ -48,7 +50,7 @@
 								{{ client.companyName }}
 							{% else %}
 								<i class="fas fa-user text-purple-400 text-xs"></i>
-								Individual Client
+								{{ 'Individual Client'|trans }}
 							{% endif %}
 						</p>
 					</div>
@@ -62,7 +64,7 @@
 					<div>
 						<h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
 							<i class="fas fa-address-card"></i>
-							Contact Information
+							{{ 'Contact Information'|trans }}
 						</h3>
 						<div class="space-y-4">
 							<div class="group flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
@@ -70,7 +72,7 @@
 									<i class="fas fa-envelope"></i>
 								</div>
 								<div>
-									<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Email</p>
+									<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">{{ 'Email'|trans }}</p>
 									<span class="text-sm text-slate-200">{{ client.email }}</span>
 								</div>
 							</div>
@@ -80,7 +82,7 @@
 									<i class="fas fa-phone"></i>
 								</div>
 								<div>
-									<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Phone</p>
+									<p class="text-xs text-slate-500 uppercase font-bold tracking-wider">{{ 'Phone'|trans }}</p>
 									<span class="text-sm text-slate-200 font-mono tracking-wide">{{ client.phoneNumber }}</span>
 								</div>
 							</div>
@@ -90,7 +92,7 @@
 					<div>
 						<h3 class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-4 flex items-center gap-2">
 							<i class="fas fa-map-marker-alt"></i>
-							Address
+							{{ 'Address'|trans }}
 						</h3>
 
 						<div class="group flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
@@ -98,7 +100,7 @@
 								<i class="fas fa-location-arrow"></i>
 							</div>
 							<div>
-								<p class="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Billing Address</p>
+								<p class="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">{{ 'Billing Address'|trans }}</p>
 								<span class="text-sm text-slate-200 leading-relaxed block">
 									{{ client.address }}<br>
 									{{ client.postCode }}
@@ -119,7 +121,7 @@
 									{% endif %}
 									{% if client.vatNumber %}
 										<div>
-											<p class="text-[10px] text-slate-500 uppercase font-bold">VAT Number</p>
+											<p class="text-[10px] text-slate-500 uppercase font-bold">{{ 'VAT Number'|trans }}</p>
 											<p class="text-xs text-slate-300 font-mono">{{ client.vatNumber }}</p>
 										</div>
 									{% endif %}
