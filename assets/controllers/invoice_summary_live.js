@@ -48,7 +48,7 @@ export default class extends Controller {
         if (vatExemptionNotice) {
             if (Math.abs(totalVat) < 0.0001) {
                 vatExemptionNotice.textContent =
-                    "VAT not applicable (Micro-entrepreneur, VAT exemption - Article 293 B of the French Tax Code";
+                    "TVA non applicable, art. 293 B du CGI";
             } else {
                 vatExemptionNotice.textContent = "";
             }
