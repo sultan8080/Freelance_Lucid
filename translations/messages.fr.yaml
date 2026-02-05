@@ -43,3 +43,38 @@ home:
     feature_secure_desc: "Contrôle d'accès granulaire pour que vos données restent privées."
     cta_subtitle: "Arrêtez de jongler avec les tableurs. Concentrez-vous sur votre travail, on gère le reste."
     footer_copyright: "Freelance Flow. Conçu pour les Freelances en France."
+
+# --- Dashboard UI ---
+"Overview": "Vue d'ensemble"
+"Management": "Gestion"
+"Clients": "Clients"
+"Invoices": "Factures"
+"Analytics": "Analyses"
+"Home Page": "Accueil"
+"Dashboard Overview": "Aperçu du Tableau de Bord"
+
+# --- Dashboard Cards & Headers ---
+"Overview for": "Aperçu pour"
+"Invoice": "Facture"
+"Client": "Client"
+"Revenue": "Chiffre d'affaires"
+"Live Performance": "Performance en direct"
+"Pending Payment": "En attente de paiement"
+"Invoices sent, waiting cash": "Factures envoyées, en attente"
+"Drafts": "Brouillons"
+"Click to finish editing": "Cliquer pour terminer"
+"Total Clients": "Total Clients"
+"new this month": "nouveaux ce mois-ci"
+"Steady relationship": "Relation stable"
+"Recent Invoices": "Factures Récentes"
+"View All": "Voir tout"
+"No recent activity found.": "Aucune activité récente."
+
+# --- Table Headers & Statuses ---
+"Invoice #": "Facture N°"
+"Date": "Date"
+"Amount (HT)": "Montant (HT)"
+"Status": "Statut"
+"DRAFT": "BROUILLON"
+"SENT": "ENVOYÉE"
+"PAID": "PAYÉE"

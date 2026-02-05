@@ -1,157 +1,169 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div
-		data-controller="layout" data-action="click->layout#closeUserDropdown" class="min-h-screen flex flex-col">
+    <div
+        data-controller="layout" data-action="click->layout#closeUserDropdown" class="min-h-screen flex flex-col">
 
-		{# 1. FIXED LOGO (Sidebar Header) #}
-		<div data-layout-target="companyTopLeft" class="fixed top-0 left-0 h-16 w-64 px-6 flex items-center bg-slate-900/60 backdrop-blur-xl border-b border-r border-white/10 z-50 sidebar-transition hidden lg:flex">
-			<a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
-				<div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
-					<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
-					<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
-					<i class="fa-brands fa-slack text-white font-bold relative z-10 text-sm"></i>
-				</div>
-				<div class="text-lg font-semibold tracking-tight">
-					<span class="text-white">Freelance</span>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
-				</div>
-			</a>
-		</div>
+        {# 1. FIXED LOGO (Sidebar Header) #}
+        <div data-layout-target="companyTopLeft" class="fixed top-0 left-0 h-16 w-64 px-6 flex items-center bg-slate-900/60 backdrop-blur-xl border-b border-r border-white/10 z-50 sidebar-transition hidden lg:flex">
+            <a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
+                <div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
+                    <div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
+                    <i class="fa-brands fa-slack text-white font-bold relative z-10 text-sm"></i>
+                </div>
+                <div class="text-lg font-semibold tracking-tight">
+                    <span class="text-white">Freelance</span>
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
+                </div>
+            </a>
+        </div>
 
-		{# 2. TOP NAVBAR #}
-		<nav class="fixed top-0 inset-x-0 h-16 bg-slate-900/40 backdrop-blur-xl border-b border-white/5 z-40 transition-all duration-300">
-			<div data-layout-target="topbarInner" class="flex items-center justify-between h-full px-6 sidebar-transition lg:ml-64">
+        {# 2. TOP NAVBAR #}
+        <nav class="fixed top-0 inset-x-0 h-16 bg-slate-900/40 backdrop-blur-xl border-b border-white/5 z-40 transition-all duration-300">
+            <div data-layout-target="topbarInner" class="flex items-center justify-between h-full px-6 sidebar-transition lg:ml-64">
 
-				<div class="flex items-center gap-4">
-					<button data-action="click->layout#toggleSidebar" class="p-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all active:scale-95">
-						<i class="fas fa-bars text-lg"></i>
-					</button>
+                <div class="flex items-center gap-4">
+                    <button data-action="click->layout#toggleSidebar" class="p-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all active:scale-95">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
 
-					<span data-layout-target="companyNextBurger" class="hidden opacity-0 -translate-x-4 transition-all duration-500 ease-out">
-						<a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
-							<div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
-								<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
-								<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
-								<i class="fa-brands fa-slack text-white font-bold relative z-10 text-sm"></i>
-							</div>
-							<div class="text-lg font-semibold tracking-tight">
-								<span class="text-white">Freelance</span>
-								<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
-							</div>
-						</a>
-					</span>
-				</div>
+                    <span data-layout-target="companyNextBurger" class="hidden opacity-0 -translate-x-4 transition-all duration-500 ease-out">
+                        <a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
+                            <div class="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+                                <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-700"></div>
+                                <div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-shimmer"></div>
+                                <i class="fa-brands fa-slack text-white font-bold relative z-10 text-sm"></i>
+                            </div>
+                            <div class="text-lg font-semibold tracking-tight">
+                                <span class="text-white">Freelance</span>
+                                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Flow</span>
+                            </div>
+                        </a>
+                    </span>
+                </div>
 
-				<div class="flex items-center gap-4">
-					<div class="relative group">
-						<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/5 transition-all text-sm font-medium text-slate-400 hover:text-white">
-							<i class="fa-solid fa-earth-europe opacity-50 group-hover:opacity-100"></i>
-							<span class="opacity-65 group-hover:opacity-100">EN</span>
-							<i class="fa-solid fa-chevron-down opacity-50 group-hover:opacity-100 text-[10px]"></i>
-						</button>
-						<div class="absolute right-0 top-full mt-2 w-24 py-1 rounded-lg bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
-							<a href="#" class="block px-3 py-2 text-xs font-medium text-white bg-white/5 text-center">EN</a>
-							<a href="#" class="block px-3 py-2 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 text-center">FR</a>
-						</div>
-					</div>
+                <div class="flex items-center gap-4">
 
-					<div class="relative">
-						<button data-action="click->layout#toggleUserDropdown:stop" class="flex items-center gap-3 px-3 py-1.5 rounded-xl hover:bg-white/5 transition-all active:scale-95">
-							<span class="hidden sm:block text-sm font-medium text-slate-300">
-								Hi,
-								{{app.user.firstName }}
-							
-								{{ app.user.lastName }}</span>
 
-							<div class="w-8 h-8 rounded bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-xs text-white font-bold shadow-lg shadow-blue-500/20">
-								{{ (app.user.firstName|slice(0, 1) ~ app.user.lastName|slice(0, 1))|upper }}
-							</div>
-							<i data-layout-target="userChevron" class="fas fa-chevron-down text-[10px] text-slate-500 transition-transform duration-300"></i>
-						</button>
+                    <div class="relative group">
+                        {# The Trigger Button #}
+                        <button class="flex items-center gap-1.5 text-sm font-medium text-slate-200 hover:text-white transition-colors uppercase">
+                            <i class="fa-solid fa-earth-europe opacity-50 group-hover:opacity-100"></i>
+                            <span class="opacity-65 group-hover:opacity-100">{{ app.request.locale }}</span>
+                            <i class="fa-solid fa-chevron-down opacity-50 group-hover:opacity-100 text-xs"></i>
+                        </button>
 
-						<div data-layout-target="userDropdown" class="hidden absolute right-0 mt-3 w-64 bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 z-50 transform origin-top-right transition-all">
-							<div class="px-4 py-3 mb-1 border-b border-white/5">
-								<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Signed in as</p>
-								<p class="text-sm font-bold text-white truncate">{{ app.user ? app.user.userIdentifier : 'guest' }}</p>
-							</div>
-							<a href="{{ path('app_home') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
-								<i class="fas fa-home w-4 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
-								Home Page
-							</a>
-							<a href="{{ path('app_profile_show') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
-								<i class="fas fa-user-circle w-5 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
-								My Profile
-							</a>
-							<div class="my-2 border-t border-white/5"></div>
-							<a href="{{ path('app_logout')|default('#') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-red-500/10 text-red-400 rounded-xl transition-all text-sm font-semibold group">
-								<i class="fas fa-sign-out-alt w-5 text-center group-hover:text-red-300"></i>
-								Logout
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
+                        {# The Dropdown Menu #}
+                        <div class="absolute right-0 top-full hidden group-hover:block pt-2 z-50">
+                            <div class="w-24 bg-slate-800 border border-slate-700 rounded-md shadow-lg py-1">
+                                {% for locale in ['en', 'fr'] %}
+                                    {% if locale != app.request.locale %}
+                                        <a href="{{ path(app.request.attributes.get('_route')|default('app_home'), app.request.attributes.get('_route_params', {})|merge({'_locale': locale})) }}" data-turbo="false" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors uppercase">
+                                            {{ locale }}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-4 w-px bg-white/20 hidden sm:block"></div>
 
-		{# 3. SIDEBAR #}
-		<aside data-layout-target="sidebar" class="fixed top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/30 backdrop-blur-xl text-white sidebar-transition z-30 border-r border-white/5 overflow-y-auto">
+                    <div class="relative">
+                        <button data-action="click->layout#toggleUserDropdown:stop" class="flex items-center gap-3 px-3 py-1.5 rounded-xl hover:bg-white/5 transition-all active:scale-95">
+                            <span class="hidden sm:block text-sm font-medium text-slate-300">
+                                {{ 'Hi,'|trans }}
+                                {{ app.user.firstName }}
+                                {{ app.user.lastName }}</span>
 
-			<div class="flex flex-col h-full p-6">
+                            <div class="w-8 h-8 rounded bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-xs text-white font-bold shadow-lg shadow-blue-500/20">
+                                {{ (app.user.firstName|slice(0, 1) ~ app.user.lastName|slice(0, 1))|upper }}
+                            </div>
+                            <i data-layout-target="userChevron" class="fas fa-chevron-down text-[10px] text-slate-500 transition-transform duration-300"></i>
+                        </button>
 
-				<div class="space-y-8">
-					<section>
-						<p class="text-[10px] uppercase text-slate-500 tracking-[0.15em] font-bold mb-4 px-2">Overview</p>
-						<nav class="space-y-1">
-							<a href="{{ path('dashboard_freelancer') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ app.request.get('_route') == 'dashboard_freelancer' ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
-								<i class="fas fa-th-large w-5 text-center transition-colors {{ app.request.get('_route') == 'dashboard_freelancer' ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
-								<span class="font-medium text-sm">Dashboard</span>
-							</a>
-						</nav>
-					</section>
+                        <div data-layout-target="userDropdown" class="hidden absolute right-0 mt-3 w-64 bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 z-50 transform origin-top-right transition-all">
+                            <div class="px-4 py-3 mb-1 border-b border-white/5">
+                                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">{{ 'Signed in as'|trans }}</p>
+                                <p class="text-sm font-bold text-white truncate">{{ app.user ? app.user.userIdentifier : 'guest' }}</p>
+                            </div>
+                            <a href="{{ path('app_home') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
+                                <i class="fas fa-home w-4 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
+                                {{ 'Home Page'|trans }}
+                            </a>
+                            <a href="{{ path('app_profile_show') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 rounded-xl transition-all text-sm text-slate-300 group mt-1">
+                                <i class="fas fa-user-circle w-5 text-center opacity-50 group-hover:text-blue-400 group-hover:opacity-100 transition"></i>
+                                {{ 'My Profile'|trans }}
+                            </a>
+                            <div class="my-2 border-t border-white/5"></div>
+                            <a href="{{ path('app_logout')|default('#') }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-red-500/10 text-red-400 rounded-xl transition-all text-sm font-semibold group">
+                                <i class="fas fa-sign-out-alt w-5 text-center group-hover:text-red-300"></i>
+                                {{ 'Logout'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-					<section>
-						<p class="text-[10px] uppercase text-slate-500 tracking-[0.15em] font-bold mb-4 px-2">Management</p>
-						<nav class="space-y-1">
-							<a href="{{ path('app_client_index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'client' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
-								<i class="fas fa-users w-5 text-center transition-colors {{ 'client' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
-								<span class="font-medium text-sm">Clients</span>
-							</a>
-							<a href="{{ path('app_invoice_index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'invoice' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
-								<i class="fas fa-file-invoice-dollar w-5 text-center transition-colors {{ 'invoice' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
-								<span class="font-medium text-sm">Invoices</span>
-							</a>
-							<a href="{{ path('app_analytics') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'analytics' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
-								<i class="fas fa-chart-pie w-5 text-center transition-colors {{ 'analytics' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
-								<span class="font-medium text-sm">Analytics</span>
-							</a>
-						</nav>
-					</section>
-				</div>
+        {# 3. SIDEBAR #}
+        <aside data-layout-target="sidebar" class="fixed top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/30 backdrop-blur-xl text-white sidebar-transition z-30 border-r border-white/5 overflow-y-auto">
 
-				<div class="mt-auto pt-6 border-t border-white/5">
+            <div class="flex flex-col h-full p-6">
 
-					<div class="px-4 py-2 mb-3 text-[10px] text-slate-600">
-						&copy;
-						{{ 'now'|date('Y') }}
-						Freelance Flow
-					</div>
-				</div>
+                <div class="space-y-8">
+                    <section>
+                        <p class="text-[10px] uppercase text-slate-500 tracking-[0.15em] font-bold mb-4 px-2">{{ 'Overview'|trans }}</p>
+                        <nav class="space-y-1">
+                            <a href="{{ path('dashboard_freelancer') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ app.request.get('_route') == 'dashboard_freelancer' ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
+                                <i class="fas fa-th-large w-5 text-center transition-colors {{ app.request.get('_route') == 'dashboard_freelancer' ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
+                                <span class="font-medium text-sm">{{ 'Dashboard'|trans }}</span>
+                            </a>
+                        </nav>
+                    </section>
 
-			</div>
-		</aside>
+                    <section>
+                        <p class="text-[10px] uppercase text-slate-500 tracking-[0.15em] font-bold mb-4 px-2">{{ 'Management'|trans }}</p>
+                        <nav class="space-y-1">
+                            <a href="{{ path('app_client_index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'client' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
+                                <i class="fas fa-users w-5 text-center transition-colors {{ 'client' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
+                                <span class="font-medium text-sm">{{ 'Clients'|trans }}</span>
+                            </a>
+                            <a href="{{ path('app_invoice_index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'invoice' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
+                                <i class="fas fa-file-invoice-dollar w-5 text-center transition-colors {{ 'invoice' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
+                                <span class="font-medium text-sm">{{ 'Invoices'|trans }}</span>
+                            </a>
+                            <a href="{{ path('app_analytics') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl sidebar-transition {{ 'analytics' in app.request.get('_route') ? 'nav-link-active' : 'text-slate-400 hover:bg-white/5 hover:text-white group' }}">
+                                <i class="fas fa-chart-pie w-5 text-center transition-colors {{ 'analytics' in app.request.get('_route') ? 'text-purple-400' : 'group-hover:text-blue-400' }}"></i>
+                                <span class="font-medium text-sm">{{ 'Analytics'|trans }}</span>
+                            </a>
+                        </nav>
+                    </section>
+                </div>
 
-		{# Mobile Overlay #}
-		<div data-layout-target="overlay" data-action="click->layout#closeMobile" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-20 hidden lg:hidden"></div>
+                <div class="mt-auto pt-6 border-t border-white/5">
 
-		{# Main Content #}
-		<main data-layout-target="main" class="pt-24 lg:ml-64 sidebar-transition flex-grow relative">
-			<div class="max-w-7xl mx-auto px-6 md:px-8 pb-12">
-				<div id="flash-messages" class="mb-6">
-					{% include '_partials/_flash_messages.html.twig' %}
-				</div>
-				{% block dashboard_content %}{% endblock %}
-			</div>
-		</main>
-	</div>
+                    <div class="px-4 py-2 mb-3 text-[10px] text-slate-600">
+                        &copy;
+                        {{ 'now'|date('Y') }}
+                        Freelance Flow
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        {# Mobile Overlay #}
+        <div data-layout-target="overlay" data-action="click->layout#closeMobile" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-20 hidden lg:hidden"></div>
+
+        {# Main Content #}
+        <main data-layout-target="main" class="pt-24 lg:ml-64 sidebar-transition flex-grow relative">
+            <div class="max-w-7xl mx-auto px-6 md:px-8 pb-12">
+                <div id="flash-messages" class="mb-6">
+                    {% include '_partials/_flash_messages.html.twig' %}
+                </div>
+                {% block dashboard_content %}{% endblock %}
+            </div>
+        </main>
+    </div>
 {% endblock %}

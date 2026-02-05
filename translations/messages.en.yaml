@@ -43,3 +43,39 @@ home:
     feature_secure_desc: "Granular access control using Symfony Voters so users only access their own records."
     cta_subtitle: "Stop juggling spreadsheets and tools. Focus on your work — we handle the rest."
     footer_copyright: "Freelance Flow. Designed for French Freelancers."
+
+
+    # --- Dashboard UI ---
+"Overview": "Overview"
+"Management": "Management"
+"Clients": "Clients"
+"Invoices": "Invoices"
+"Analytics": "Analytics"
+"Home Page": "Home Page"
+"Dashboard Overview": "Dashboard Overview"
+
+# --- Dashboard Cards & Headers ---
+"Overview for": "Overview for"
+"Invoice": "Invoice"
+"Client": "Client"
+"Revenue": "Revenue"
+"Live Performance": "Live Performance"
+"Pending Payment": "Pending Payment"
+"Invoices sent, waiting cash": "Invoices sent, waiting cash"
+"Drafts": "Drafts"
+"Click to finish editing": "Click to finish editing"
+"Total Clients": "Total Clients"
+"new this month": "new this month"
+"Steady relationship": "Steady relationship"
+"Recent Invoices": "Recent Invoices"
+"View All": "View All"
+"No recent activity found.": "No recent activity found."
+
+# --- Table Headers & Statuses ---
+"Invoice #": "Invoice #"
+"Date": "Date"
+"Amount (HT)": "Amount (HT)"
+"Status": "Status"
+"DRAFT": "DRAFT"
+"SENT": "SENT"
+"PAID": "PAID"
