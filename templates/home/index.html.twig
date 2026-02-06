@@ -100,31 +100,32 @@
 		</nav>
 	</div>
 
-	<main class="relative pt-40 pb-32">
-		<div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
-
-		<div class="mx-auto max-w-7xl px-6 text-center">
-
+	<main class="relative pt-40 pb-32 overflow-hidden">
+		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+		<div
+			class="mx-auto max-w-7xl px-6 text-center">
+			{# Status Badge #}
 			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
 				<span class="relative flex h-2 w-2">
 					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-					<span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+					<span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
 				</span>
 				<span class="text-xs font-medium text-slate-300">{{ 'Ready for Fiscal Year 2026'|trans }}</span>
 			</div>
-
+			{# Hero Title #}
 			<h1 class="text-4xl md:text-5xl xl:text-7xl font-semibold leading-tight text-white mb-6">
 				{{ 'Manage your'|trans }}
-				<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+				<span class="bg-gradient-to-r from-blue-500 to-purple-700 bg-clip-text text-transparent">
 					{{ 'invoices, clients & URSSAF'|trans }}
 				</span><br/>
 				{{ 'without headaches'|trans }}
 			</h1>
-
+			{# Hero Description #}
 			<p class="mt-6 max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed">
 				{{ 'home.hero_description'|trans }}
 			</p>
 
+			{# CTA Buttons #}
 			<div class="mt-10 mb-20 flex flex-col sm:flex-row justify-center gap-4">
 				<a href="{{ path('app_register') }}" class="group relative px-8 py-4 rounded-full overflow-hidden transition-all duration-300 shadow-lg shadow-blue-500/20 hover:scale-[1.03]">
 					<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
@@ -137,14 +138,13 @@
 				</a>
 			</div>
 
-			{# Hero Image #}
-
-			<div class="relative max-w-3xl xl:max-w-5xl mx-auto mt-12 px-4 md:px-0 animate-float perspective-1000 transition-all duration-500 ease-in-out">
+			{# Hero Container Image #}
+			<div class="relative mx-auto mt-12 px-4 md:px-0 animate-float perspective-1000 max-w-3xl xl:max-w-5xl">
 				<div
 					class="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-1 shadow-2xl transform rotate-x-12">
 
 					{# Window Controls #}
-					<div class="h-8 xl:h-10 bg-white/5 rounded-t-xl border-b border-white/5 flex items-center px-3 gap-1.5 transition-all duration-500">
+					<div class="h-8 xl:h-10 bg-white/5 rounded-t-xl border-b border-white/5 flex items-center px-3 gap-1.5">
 						<div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
 						<div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
 						<div class="w-2.5 h-2.5 rounded-full bg-emerald-500/50"></div>
@@ -153,166 +153,164 @@
 					{# Content Grid #}
 					<div
 						class="p-4 md:p-6 grid grid-cols-4 gap-4 text-left">
-
-						{# Sidebar #}
-						<div class="hidden md:block col-span-1 space-y-3 xl:space-y-4 transition-all duration-500">
-							<div class="h-6 xl:h-8 w-3/4 bg-white/10 rounded-md transition-all duration-500"></div>
-							<div class="h-3 xl:h-4 w-1/2 bg-white/5 rounded-md transition-all duration-500"></div>
-							<div class="h-3 xl:h-4 w-2/3 bg-white/5 rounded-md transition-all duration-500"></div>
-							<div class="h-3 xl:h-4 w-1/2 bg-white/5 rounded-md transition-all duration-500"></div>
+						{# Sidebar Mockup #}
+						<div class="hidden md:block col-span-1 space-y-3 xl:space-y-4">
+							<div class="h-6 xl:h-8 w-3/4 bg-white/10 rounded-md"></div>
+							<div class="h-3 xl:h-4 w-1/2 bg-white/5 rounded-md"></div>
+							<div class="h-3 xl:h-4 w-2/3 bg-white/5 rounded-md"></div>
+							<div class="h-3 xl:h-4 w-1/2 bg-white/5 rounded-md"></div>
 						</div>
 
-						{# Main Content #}
+						{# Main Content Mockup #}
 						<div class="col-span-4 md:col-span-3">
 							<div class="flex justify-between items-end mb-4">
-								<div class="transition-all duration-500">
-									<div class="h-6 xl:h-8 w-32 bg-white/10 rounded-md mb-2 transition-all duration-500"></div>
-									<div class="h-3 xl:h-4 w-20 bg-white/5 rounded-md transition-all duration-500"></div>
+								<div>
+									<div class="h-6 xl:h-8 w-32 bg-white/10 rounded-md mb-2"></div>
+									<div class="h-3 xl:h-4 w-20 bg-white/5 rounded-md"></div>
 								</div>
-								<div class="h-8 xl:h-10 w-24 bg-cyan-500/20 rounded-md border border-cyan-500/30 transition-all duration-500"></div>
+								<div class="h-8 xl:h-10 w-24 bg-cyan-500/20 rounded-md border border-cyan-500/30"></div>
 							</div>
 
 							{# Chart Area #}
-							<div class="h-40 md:h-48 xl:h-64 bg-gradient-to-b from-white/5 to-transparent border border-white/5 rounded-xl mb-4 relative overflow-hidden transition-all duration-500">
+							<div class="h-40 md:h-48 xl:h-64 bg-gradient-to-b from-white/5 to-transparent border border-white/5 rounded-xl mb-4 relative overflow-hidden">
 								<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-cyan-500/10 to-transparent"></div>
 								<svg class="absolute bottom-0 left-0 right-0 w-full h-full" preserveaspectratio="none">
 									<path d="M0,100 Q300,50 600,80 T1200,20" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="2"/>
 								</svg>
 							</div>
 
-							{# Bottom Grid #}
-							<div class="grid grid-cols-2 gap-3 transition-all duration-500">
-								<div class="h-16 md:h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5 transition-all duration-500"></div>
-								<div class="h-16 md:h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5 transition-all duration-500"></div>
+							{# Bottom Stats Grid #}
+							<div class="grid grid-cols-2 gap-3">
+								<div class="h-16 md:h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5"></div>
+								<div class="h-16 md:h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-3xl blur-2xl opacity-20 -z-10 transition-all duration-500"></div>
+				<div class="absolute -inset-4 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl blur-2xl -z-10 transition-all duration-500"></div>
 			</div>
-			<div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-3xl blur-2xl opacity-20 -z-10"></div>
 		</div>
-	</div>
-</main>
+	</main>
 
-<section id="features" class="relative z-10 py-24">
-	<div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 -z-10"></div>
 
-	<div class="max-w-7xl mx-auto px-6">
-		<div class="text-center mb-16">
-			<h2 class="text-3xl font-bold text-white mb-4">{{ 'Precision Tools'|trans }}</h2>
-			<p class="text-slate-400">{{ 'home.features_subtitle'|trans }}</p>
+	<section id="features" class="relative z-10 py-24">
+		<div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 -z-10"></div>
+
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-bold text-white mb-4">{{ 'Precision Tools'|trans }}</h2>
+				<p class="text-slate-400">{{ 'home.features_subtitle'|trans }}</p>
+			</div>
+
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-blue-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6 text-blue-400">
+							<i class="fa-solid fa-users text-xl"></i>
+						</div>
+						<h3 class="text-xl font-semibold text-white-50 mb-2">
+							<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Client Management'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_client_desc'|trans }}</p>
+					</div>
+				</div>
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-purple-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full group-hover:bg-purple-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6 text-purple-400">
+							<i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+						</div>
+						<h3 class="text-xl font-semibold text-white-50 mb-2">
+							<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Invoice Automation'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_invoice_desc'|trans }}</p>
+					</div>
+				</div>
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-emerald-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full group-hover:bg-emerald-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400">
+							<i class="fa-solid fa-calculator text-xl"></i>
+						</div>
+						<h3 class="text-xl mb-2">
+							<span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold">{{ 'Tax Intelligence'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_tax_desc'|trans }}</p>
+					</div>
+				</div>
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-red-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-red-500/20 blur-3xl rounded-full group-hover:bg-red-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center mb-6 text-red-400">
+							<i class="fa-solid fa-file-pdf text-xl"></i>
+						</div>
+						<h3 class="text-xl mb-2">
+							<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'PDF Generation'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_pdf_desc'|trans }}</p>
+					</div>
+				</div>
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-cyan-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/20 blur-3xl rounded-full group-hover:bg-cyan-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400">
+							<i class="fa-solid fa-gauge-high text-xl"></i>
+						</div>
+						<h3 class="text-xl mb-2">
+							<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Financial Overview'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_finance_desc'|trans }}</p>
+					</div>
+				</div>
+
+				<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-amber-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
+					<div class="absolute -right-10 -top-10 w-32 h-32 bg-amber-500/20 blur-3xl rounded-full group-hover:bg-amber-500/30 transition-all"></div>
+					<div class="relative z-10">
+						<div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mb-6 text-amber-400">
+							<i class="fa-solid fa-shield-halved text-xl"></i>
+						</div>
+						<h3 class="text-xl mb-2">
+							<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Secure Access'|trans }}</span>
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_secure_desc'|trans }}</p>
+					</div>
+				</div>
+
+			</div>
 		</div>
+	</section>
 
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-blue-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-6 text-blue-400">
-						<i class="fa-solid fa-users text-xl"></i>
-					</div>
-					<h3 class="text-xl font-semibold text-white-50 mb-2">
-						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Client Management'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_client_desc'|trans }}</p>
-				</div>
+	<section class="py-32">
+		<div class="mx-auto max-w-4xl px-6 text-center">
+			<div class="bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 rounded-3xl p-10 backdrop-blur-xl">
+				<h2 class="text-3xl font-semibold mb-4 text-white">{{ 'Built for freelancers who value clarity'|trans }}</h2>
+				<p class="text-gray-400 mb-8">{{ 'home.cta_subtitle'|trans }}</p>
+				<a href="{{ path('app_register') }}" class="group relative inline-block px-8 py-3 rounded-full overflow-hidden shadow-xl hover:scale-[1.03] transition-all duration-300">
+					<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+					<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+					<span class="relative font-medium text-white">{{ 'Create my account'|trans }}</span>
+				</a>
 			</div>
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-purple-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full group-hover:bg-purple-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-6 text-purple-400">
-						<i class="fa-solid fa-file-invoice-dollar text-xl"></i>
-					</div>
-					<h3 class="text-xl font-semibold text-white-50 mb-2">
-						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Invoice Automation'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_invoice_desc'|trans }}</p>
-				</div>
-			</div>
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-emerald-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full group-hover:bg-emerald-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400">
-						<i class="fa-solid fa-calculator text-xl"></i>
-					</div>
-					<h3 class="text-xl mb-2">
-						<span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold">{{ 'Tax Intelligence'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_tax_desc'|trans }}</p>
-				</div>
-			</div>
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-red-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-red-500/20 blur-3xl rounded-full group-hover:bg-red-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center mb-6 text-red-400">
-						<i class="fa-solid fa-file-pdf text-xl"></i>
-					</div>
-					<h3 class="text-xl mb-2">
-						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'PDF Generation'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_pdf_desc'|trans }}</p>
-				</div>
-			</div>
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-cyan-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/20 blur-3xl rounded-full group-hover:bg-cyan-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400">
-						<i class="fa-solid fa-gauge-high text-xl"></i>
-					</div>
-					<h3 class="text-xl mb-2">
-						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Financial Overview'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_finance_desc'|trans }}</p>
-				</div>
-			</div>
-
-			<div class="group p-8 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 border-t-white/20 hover:border-amber-500/30 transition duration-300 shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-10 -top-10 w-32 h-32 bg-amber-500/20 blur-3xl rounded-full group-hover:bg-amber-500/30 transition-all"></div>
-				<div class="relative z-10">
-					<div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mb-6 text-amber-400">
-						<i class="fa-solid fa-shield-halved text-xl"></i>
-					</div>
-					<h3 class="text-xl mb-2">
-						<span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-extrabold">{{ 'Secure Access'|trans }}</span>
-					</h3>
-					<p class="text-slate-400 text-sm leading-relaxed">{{ 'home.feature_secure_desc'|trans }}</p>
-				</div>
-			</div>
-
 		</div>
-	</div>
-</section>
+	</section>
 
-<section class="py-32">
-	<div class="mx-auto max-w-4xl px-6 text-center">
-		<div class="bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 rounded-3xl p-10 backdrop-blur-xl">
-			<h2 class="text-3xl font-semibold mb-4 text-white">{{ 'Built for freelancers who value clarity'|trans }}</h2>
-			<p class="text-gray-400 mb-8">{{ 'home.cta_subtitle'|trans }}</p>
-			<a href="{{ path('app_register') }}" class="group relative inline-block px-8 py-3 rounded-full overflow-hidden shadow-xl hover:scale-[1.03] transition-all duration-300">
-				<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-				<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
-				<span class="relative font-medium text-white">{{ 'Create my account'|trans }}</span>
-			</a>
+	<footer class="border-t border-white/10 bg-slate-950 pt-16 pb-8">
+		<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+			<div class="text-slate-500 text-sm">
+				&copy;
+				{{ 'now'|date('Y') }}
+				{{ 'home.footer_copyright'|trans }}
+			</div>
+			<div class="flex gap-6">
+				<a href="#" class="text-slate-500 hover:text-white transition">{{ 'Privacy'|trans }}</a>
+				<a href="#" class="text-slate-500 hover:text-white transition">{{ 'Terms'|trans }}</a>
+			</div>
 		</div>
-	</div>
-</section>
-
-<footer class="border-t border-white/10 bg-slate-950 pt-16 pb-8">
-	<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-		<div class="text-slate-500 text-sm">
-			&copy;
-			{{ 'now'|date('Y') }}
-			{{ 'home.footer_copyright'|trans }}
-		</div>
-		<div class="flex gap-6">
-			<a href="#" class="text-slate-500 hover:text-white transition">{{ 'Privacy'|trans }}</a>
-			<a href="#" class="text-slate-500 hover:text-white transition">{{ 'Terms'|trans }}</a>
-		</div>
-	</div>
-</footer>{% endblock %}
+	</footer>
+{% endblock %}
