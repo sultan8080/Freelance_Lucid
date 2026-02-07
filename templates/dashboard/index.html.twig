@@ -44,7 +44,7 @@
 					{# Year Select #}
 					<div class="relative w-full sm:w-28">
 						<select name="year" onchange="this.form.submit()" class="w-full appearance-none bg-white/5 border border-white/10 text-white text-sm rounded-xl focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 block px-4 py-2.5 [&>option]:bg-slate-900 [&>option]:text-white cursor-pointer hover:bg-white/10 transition-all outline-none">
-							{% for y in ("now"|date("Y") - 2)..("now"|date("Y") + 1) %}
+							{% for y in 2023..("now"|date("Y") + 1) %}
 								<option value="{{ y }}" {{ y == selected_year ? 'selected' : '' }}>
 									{{ y }}
 								</option>

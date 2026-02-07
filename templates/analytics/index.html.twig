@@ -26,7 +26,8 @@
 			<form method="get" action="{{ path('app_analytics') }}">
 				<div class="relative group">
 					<select name="year" onchange="this.form.submit()" class="appearance-none bg-white/5 border border-white/10 text-white font-semibold text-sm rounded-xl focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 block w-32 px-4 py-2.5 shadow-lg backdrop-blur-md cursor-pointer hover:bg-white/10 transition-all outline-none">
-						{% for year in (current_year - 2)..(current_year + 1) %}
+						
+						{% for year in 2023..("now"|date("Y") + 1) %}
 							<option value="{{ year }}" {{ year == selected_year ? 'selected' : '' }} class="bg-slate-900 text-slate-300">
 								{{ year }}
 							</option>
