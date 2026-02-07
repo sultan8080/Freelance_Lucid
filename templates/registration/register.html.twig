@@ -31,7 +31,7 @@
 
 	<div class="min-h-screen flex items-center justify-center px-4 py-12 relative z-10">
 
-		<div class="glass-card w-full max-w-md p-8 sm:p-10 relative">
+		<div class="glass-card w-full max-w-lg p-8 sm:p-10 relative">
 
 			<div class="text-center mb-8">
 				<div class="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center shadow-[0_0_20px_rgba(124,58,237,0.4)] mb-5 relative overflow-hidden group">
@@ -42,12 +42,38 @@
 				<h2 class="text-3xl mt-2 font-bold text-white mb-2 tracking-tight">{{ 'Create Account'|trans }}</h2>
 				<p class="text-slate-400 text-sm">{{ 'Join Freelance Flow today'|trans }}</p>
 			</div>
+			{# --- RECRUITER BUTTON --- #}
+			<div class="mb-8">
+				<a href="{{ path('app_guest_login') }}" class="group relative w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-purple-800 bg-slate-900/20 hover:bg-slate-900/100 text-blue-200 hover:text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] overflow-hidden">
 
-			{{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+					<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-purple-400/10 to-transparent group-hover:animate-shimmer"></div>
+
+					<i class="fa-solid fa-rocket text-purple-600 group-hover:text-blue-600 transition-colors animate-pulse"></i>
+					<span class="text-sm font-semibold tracking-wide">{{ 'recruiter-access-one-click'|trans }}</span>
+
+					<span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+						<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+						<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-purple-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
+					</span>
+				</a>
+
+				<div class="relative mt-8 mb-4">
+					<div class="absolute inset-0 flex items-center" aria-hidden="true">
+						<div class="w-full border-t border-slate-700/50"></div>
+					</div>
+					<div class="relative flex justify-center text-xs uppercase">
+						<span class="bg-slate-900 px-3 text-slate-500 tracking-widest">{{ 'or'|trans }}</span>
+					</div>
+				</div>
+			</div>
 
 			<div id="flash-messages" class="mb-6">
 				{% include '_partials/_flash_messages.html.twig' %}
 			</div>
+
+			{# --- REGISTRATION FORM --- #}
+			{{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+
 
 			<div>
 				{{ form_label(registrationForm.email, 'Email Address'|trans, {'label_attr': {'class': 'block text-sm font-medium text-slate-300 mb-1.5'}}) }}
@@ -109,6 +135,15 @@
 				<span class="relative text-sm font-semibold text-white">{{ 'Create Account'|trans }}</span>
 			</button>
 
+			<div class="relative py-2">
+				<div class="absolute inset-0 flex items-center" aria-hidden="true">
+					<div class="w-full border-t border-slate-600/30"></div>
+				</div>
+				<div class="relative flex justify-center">
+					<span class="px-2 text-xs uppercase text-slate-500 bg-slate-900/50 backdrop-blur-md rounded">{{ 'Or try instantly'|trans }}
+					</span>
+				</div>
+			</div>
 			<div class="text-center mt-6">
 				<p class="text-sm text-slate-400">
 					{{ 'Already have an account?'|trans }}
