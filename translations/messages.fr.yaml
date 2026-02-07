@@ -116,7 +116,7 @@ home:
 "total invoices": "factures au total"
 "Previous": "Précédent"
 "Next": "Suivant"
-
+"total clients": "Clients au total"
 
 # --- Invoice Creation ---
 "New Invoice": "Nouvelle Facture"
@@ -360,3 +360,15 @@ action:
   sign_in: Se connecter
   sign_out: Se déconnecter
   create_account: Créer un compte
+
+# --- Recruiter Access  ---
+
+"recruiter-access-one-click" : "Accès recruteur (1-Clic)"
+"recruiteraccess" : "Accès Recruteur"
+"Demo" : "Démo"
+"or": "ou"
+"Or try instantly" : "Ou testez instantanément"
+
+# --- GuestLoginController message  ---
+
+"recruiter sucess login" : "Bienvenue ! Votre espace de démonstration est prêt à être exploré."

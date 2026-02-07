@@ -116,6 +116,7 @@ home:
 "total invoices": "total invoices"
 "Previous": "Previous"
 "Next": "Next"
+"total clients": "total clients"
 
 # --- Invoice Creation ---
 "New Invoice": "New Invoice"
@@ -358,8 +359,23 @@ login:
   forgot_password: Forgot password?
   remember_me: Remember me
   no_account: Don't have an account?
-
+  
 action:
   sign_in: Sign in
   sign_out: Sign out
   create_account: Create one now
+
+
+# --- Recruiter Access  ---
+"recruiter-access-one-click" : "Recruiter Access (One-Click)"
+
+"recruiter access" : "Recruiter Access"
+"Demo" : "Demo"
+"or": "or"
+
+"Or try instantly" : "Or try instantly"
+# --- GuestLoginController message  ---
+
+"recruiter sucess login" : "Welcome! Your demo space is ready to explore."
+
+
