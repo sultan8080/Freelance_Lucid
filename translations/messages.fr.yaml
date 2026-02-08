@@ -393,9 +393,94 @@ Revenue trend for: Tendance des revenus pour
 Full Analytics: Analytics complets
 Revenue distribution (All Time): Répartition des revenus (Total)
 
+Technical Showcase: Showcase Technique
+A quick look at the engineering behind Freelance Lucid, explore the architecture, design choices, and technical decisions. : "Un aperçu rapide de l'ingénierie derrière Freelance Lucid : explorez l'architecture, les choix de conception et les décisions techniques"
+View Architecture: Voir l'Architecture
+
 # translations/messages.fr.yaml
 
 # Dashboard Charts
 Daily Performance: Performance Quotidienne
 Revenue evolution for: Évolution des revenus pour
 View Yearly Trend: Voir Tendance Annuelle
+
+Project Overview: Résumé Projet
+
+
+# --- Project Overview ---
+
+A quick look at the engineering behind: "Un aperçu rapide de l'ingénierie derrière"
+explore the architecture, design choices, and technical decisions.: "explorez l'architecture, les choix de conception et les décisions techniques."
+
+
+tech:
+  architecture:
+    title: "Architecture Technique"
+
+hero:
+  badge: "Vitrine d’Ingénierie"
+  title:
+    part1: "À l’intérieur de"
+    part2: "Freelance Lucid"
+  description:
+    part1: "Freelance Lucid est une"
+    billing: "Plateforme de Facturation et Fiscalité"
+    for: "pour"
+    freelancers: "les Freelances Français"
+    covering: "couvrant"
+    crm: "un CRM Client"
+    invoicing: "une Facturation PDF Conforme"
+    and: "et"
+    analytics: "des Analyses Financières en temps réel"
+    tech: "Sous le capot, elle met en avant"
+    strict: "le typage strict, un frontend AssetMapper moderne et une modélisation Doctrine avancée."
+  buttons:
+    source: "Voir le Code Source"
+    contact: "Me Contacter"
+
+bento:
+  schema:
+    title: "Schéma de Base de Données (MCD)"
+    subtitle: "Intégrité relationnelle stricte avec Doctrine ORM"
+    badge: "Normalisé en 3NF"
+    alt: "Schéma de Base de Données"
+    open: "Ouvrir en Grande Taille"
+
+stack:
+  core:
+    title: "Stack Backend"
+    symfony: "Dernière Version Stable"
+    php: "Typage Strict"
+    mariadb: "Doctrine ORM 3.6"
+  frontend:
+    title: "Frontend"
+    tailwind: "Moteur JIT Moderne"
+    assetmapper: "Sans Build (ImportMap)"
+    ux: "Turbo & Stimulus 3"
+
+highlights:
+  automation:
+    title: "Maintenance Automatisée"
+    text: "Une Commande Symfony personnalisée (Cron Job) s’exécute chaque jour pour nettoyer les comptes invités de plus de 24h. Utilise des suppressions en cascade pour éviter toute donnée orpheline."
+  integrity:
+    title: "Facturation Immutable"
+    text: "Implémente un Snapshot Pattern. Lorsqu’une facture est finalisée, les informations du client sont figées dans l’entité facture pour éviter toute corruption historique si le profil client change."
+  security:
+    title: "Accès Basé sur les Rôles"
+    text: "Des Voters Symfony stricts garantissent que chaque utilisateur n’accède qu’à ses propres données. Un Authenticator personnalisé gère le mode 'Invité en un clic' de manière sécurisée sans exposer de mot de passe."
+
+docs:
+  title: "Documentation du Projet"
+  journal:
+    title: "Journal de Développement"
+    desc: "Journal de progression quotidien"
+  specs:
+    title: "Spécifications"
+    desc: "Exigences fonctionnelles"
+  plan:
+    title: "Plan de Travail"
+    desc: "Roadmap & Planification"
+  repo:
+    title: "Dépôt Git"
+    desc: "Code Source Complet"
+    button: "Voir le Code"

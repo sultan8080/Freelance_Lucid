@@ -379,3 +379,80 @@ action:
 "recruiter sucess login" : "Welcome! Your demo space is ready to explore."
 
 
+# --- Project Overview ---
+
+A quick look at the engineering behind: "A quick look at the engineering behind"
+explore the architecture, design choices, and technical decisions.: "explore the architecture, design choices, and technical decisions."
+
+
+tech:
+  architecture:
+    title: "Technical Architecture"
+
+hero:
+  badge: "Engineering Showcase"
+  title:
+    part1: "Inside"
+    part2: "Freelance Lucid"
+  description:
+    part1: "Freelance Lucid is a dedicated"
+    billing: "Billing and Tax Platform"
+    for: "for"
+    freelancers: "French Freelancers"
+    covering: "covering"
+    crm: "Client CRM"
+    invoicing: "Compliant PDF Invoicing"
+    and: "and real‑time"
+    analytics: "Financial Analytics"
+    tech: "Under the hood, it showcases"
+    strict: "strict typing, a modern AssetMapper frontend, and advanced Doctrine modeling."
+  buttons:
+    source: "View Source Code"
+    contact: "Contact Me"
+
+bento:
+  schema:
+    title: "Database Schema (MCD)"
+    subtitle: "Strict relational integrity with Doctrine ORM"
+    badge: "3NF Normalized"
+    alt: "Database Diagram"
+    open: "Open Full Size"
+
+stack:
+  core:
+    title: "Core Stack"
+    symfony: "Latest Stable"
+    php: "Strict Types"
+    mariadb: "Doctrine ORM 3.6"
+  frontend:
+    title: "Frontend"
+    tailwind: "Modern JIT Engine"
+    assetmapper: "No-Build (ImportMap)"
+    ux: "Turbo & Stimulus 3"
+
+highlights:
+  automation:
+    title: "Automated Maintenance"
+    text: "Custom Symfony Command (Cron Job) runs daily to clean up guest accounts older than 24h. Uses cascading deletes to ensure zero database orphans."
+  integrity:
+    title: "Immutable Invoicing"
+    text: "Implements a Snapshot Pattern. When an invoice is finalized, client details are frozen into the invoice entity to prevent historical data corruption if the client profile changes."
+  security:
+    title: "Role-Based Access"
+    text: "Strict Symfony Voters ensure users can only access their own data. Custom Authenticator handles the 'One-Click Guest' logic securely without password exposure."
+
+docs:
+  title: "Project Documentation"
+  journal:
+    title: "Dev Journal"
+    desc: "Daily progress log"
+  specs:
+    title: "Specifications"
+    desc: "Functional requirements"
+  plan:
+    title: "Work Plan"
+    desc: "Roadmap & Planning"
+  repo:
+    title: "Git Repository"
+    desc: "Full Source Code"
+    button: "View Code"
