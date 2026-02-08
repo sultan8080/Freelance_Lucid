@@ -1,0 +1,14 @@
+// https://www.mocodo.net/ Original texts
+
+
+client: lastName, firstName, companyName, email, address, phoneNumber, siret, vatNumber, city, postCode, country, createdAt, updatedAt, userId
+own, 0N user, 11 client
+user: email, password, roles, firstName, lastName, companyName, address, postCode, city, country, siretNumber, vatNumber, phoneNumber, createdAt, updatedAt
+
+belong_to, 0N client, 11 invoice
+invoice: invoiceNumber, project_title, createdAt, dueDate, status, sentAt, paidAt, totalHt, totalVat, totalAmount, currency, updatedAt, frozenClientName, frozenClientAddress, frozenClientPostcode, frozenClientCity, frozenClientCountry, frozenClientPhone, frozenClientEmail, frozenClientSiret, frozenClientVat, frozenClientCompanyName
+issue, 0N user, 11 invoice
+
+invoiceItem: description, unitPrice, quantity, vatRate, vatAmount, totalHt, totalTtc
+contain, 11 invoiceItem, 0N invoice
+:
