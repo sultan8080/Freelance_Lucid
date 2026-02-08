@@ -109,6 +109,7 @@ _Goal: A functional app to manage, calculate, and export invoices._
 
 ### B. Production Deployment (AlwaysData)
 
+- [x] **Project Overview:** Add the overview feature to the dashboard with controller, Twig view, and UI optimizations.
 - [ ] **Hosting Setup:** Create an account on a hosting platform and configure the project.
 - [ ] **Server Secrets:** Add `.env.local` with `APP_ENV=prod` and MariaDB credentials.
 - [ ] **Database Init:** Run migrations or schema updates.

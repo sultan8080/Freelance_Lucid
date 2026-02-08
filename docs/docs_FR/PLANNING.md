@@ -107,10 +107,11 @@ _Objectif : Une application fonctionnelle pour gérer, calculer et éditer des f
 - [x] **Contrôleur de Connexion Invité :** Création automatique de l’utilisateur → génération des données démo → connexion programmée
 - [x] **Bouton Frontend :** Ajouter un bouton “Accès Recruteur” sur la page de connexion.
 - [x] **Nettoyage Invités :** Mettre en place un cron nocturne supprimant les comptes démo/invités de plus de 24h.
-- [x] Mise à jour Dashboard : Mettre à jour contrôleur, générateur et template avec KPIs unifiés, données réalistes et nouveau graphique quotidien.
+- [x] **Mise à jour Dashboard :** Mettre à jour contrôleur, générateur et template avec KPIs unifiés, données réalistes et nouveau graphique quotidien.
 
 ### B. Déploiement en Production (AlwaysData)
 
+- [x] **Project Overview:** Ajout de la fonctionnalité d’aperçu du projet au tableau de bord, avec création du contrôleur et optimisation de UI.
 - [ ] **Configuration de l’Hébergement :** Créer un compte sur une plateforme d’hébergement et configurer le projet.
 - [ ] **Secrets Serveur :** Ajouter un `.env.local` avec `APP_ENV=prod` et les identifiants MariaDB.
 - [ ] **Initialisation de la Base :** Lancer les migrations ou la mise à jour du schéma.

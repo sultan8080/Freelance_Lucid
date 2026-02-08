@@ -1,4 +1,4 @@
-# Modèle Logique de Données (MLD) — Freelance Lucid
+# Modèle Logique de Données (MLD) - Freelance Lucid
 
 ## Important Note
 
