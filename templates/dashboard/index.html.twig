@@ -5,6 +5,52 @@
 {% endblock %}
 
 {% block dashboard_content %}
+
+	
+	<div
+		class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/20 p-5 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+
+		{# Decorator Background #}
+		<div class="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
+
+		<div
+			class="relative z-10 flex gap-4">
+			{# Desktop Icon #}
+			<div class="hidden sm:flex w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 items-center justify-center text-xl shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+				<i class="fa-solid fa-laptop-code"></i>
+			</div>
+
+			{# Text Content #}
+			<div>
+				<h3
+					class="text-white font-bold text-lg flex items-center gap-2">
+					{# Mobile Icon #}
+					<span class="sm:hidden text-purple-400 drop-shadow-md">
+						<i class="fa-solid fa-laptop-code"></i>
+					</span>
+					{{ 'Technical Showcase'|trans }}
+				</h3>
+
+				<p class="text-slate-400 text-sm mt-1 max-w-xl leading-relaxed">
+					{{ 'A quick look at the engineering behind'|trans }}
+					<span class="font-bold text-purple-300">
+						Freelance Lucid
+					</span>,
+					{{ 'explore the architecture, design choices, and technical decisions.'|trans }}
+				</p>
+			</div>
+		</div>
+		<a href="{{ path('app_project_overview') }}" class="group relative flex-1 sm:flex-none justify-center inline-flex items-center px-5 py-2.5 rounded-lg overflow-hidden shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] whitespace-nowrap">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 to-purple-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+			<div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"></div>
+			<span class="relative flex items-center gap-2 text-sm font-semibold text-white">
+
+				{{ 'Project Overview'|trans }}
+				<i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+			</span>
+		</a>
+
+	</div>
 	<div
 		class="space-y-8 mb-10">
 
@@ -14,8 +60,7 @@
 				<h1 class="text-3xl font-extrabold text-white tracking-tight">{{ 'Dashboard'|trans }}</h1>
 				<p class="text-slate-400 mt-1 text-sm">
 					{{ 'Overview for'|trans }}
-					<span
-						class="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+					<span class="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
 						{{ selected_date|date('F')|trans }}
 						{{ selected_date|date('Y') }}
 					</span>
@@ -86,7 +131,7 @@
 						<div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)]">
 							<i class="fas fa-euro-sign text-sm"></i>
 						</div>
-						{# Translate short month name (e.g. Feb -> Fév) #}
+						
 						<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-white/5 px-2 py-1 rounded-lg border border-white/5">
 							{{ selected_date|date('M')|trans }}
 						</span>
@@ -168,15 +213,13 @@
 			{# Chart 1: Daily Revenue Trend #}
 				<div class="lg:col-span-2 glass-card p-6 rounded-2xl relative overflow-hidden border border-white/5"> <div class="flex justify-between items-start mb-6">
 					<div>
-						<h3
-							class="text-lg font-bold text-white flex items-center gap-2">
-							
+						<h3 class="text-lg font-bold text-white flex items-center gap-2">
+
 							<i class="fa-solid fa-chart-area text-purple-400"></i>
 							{{ 'Daily Performance'|trans }}
 						</h3>
-						<p
-							class="text-xs text-slate-400 mt-1">
-							
+						<p class="text-xs text-slate-400 mt-1">
+
 							{{ 'Revenue evolution for'|trans }}
 							<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-bold">
 								{{ selected_date|date('F')|trans }}
