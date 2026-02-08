@@ -54,7 +54,7 @@ class AnalyticsService
             
             // 3. Fetch Pending Invoices
             $allPending = $this->invoiceRepository->findPendingInvoices($user);
-            $pendingInvoices = array_slice($allPending, 0, 5);
+            $pendingInvoices = array_slice($allPending, 0, 15);
 
             // 4. Normalize Chart
             $monthlyRevenue = array_fill(1, 12, 0.0);
