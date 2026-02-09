@@ -22,11 +22,18 @@ To make it easy to explore without creating an account:
 
 ## 📸 Interface Preview
 
-**The Dashboard (Desktop & Mobile Responsive):**
-![Dashboard Screenshot](PLACEHOLDER_DRAG_AND_DROP_IMAGE_HERE)
+**The Dashboard (Desktop):**
+![Dashboard Screenshot](![screen-1](https://github.com/user-attachments/assets/78ad3f3b-af1c-438c-b225-1b8c438d26db)
+)
 
 **Invoice Management (Glassmorphism UI):**
-![Invoice Screenshot](PLACEHOLDER_DRAG_AND_DROP_IMAGE_HERE)
+![Invoice Screenshot](![screen-2](https://github.com/user-attachments/assets/c4516996-a38a-4db3-b261-82263707ae6d)
+)
+
+**The Dashboard (Mobile Responsive):**
+![Dashboard Screenshot](![screen-3](https://github.com/user-attachments/assets/9515caec-f144-4450-89af-2279261792fb)
+)
+
 
 ---
 
